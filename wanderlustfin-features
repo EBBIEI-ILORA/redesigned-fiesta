@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Features — WanderlustFin</title>
+  <meta name="description" content="Discover all the features that make WanderlustFin the wealth identity platform for ambitious entrepreneurs.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/styles.css">
+  
+  <style>
+    .features-hero {
+      background: linear-gradient(180deg, var(--cream-warm) 0%, var(--cream) 100%);
+      padding: calc(var(--space-3xl) + 60px) 0 var(--space-2xl);
+      text-align: center;
+    }
+
+    .features-hero h1 {
+      margin-bottom: var(--space-sm);
+    }
+
+    .features-hero p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .feature-section {
+      padding: var(--space-2xl) 0;
+    }
+
+    .feature-section:nth-child(even) {
+      background: var(--cream-warm);
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-2xl);
+      align-items: center;
+    }
+
+    .feature-grid.reverse {
+      direction: rtl;
+    }
+
+    .feature-grid.reverse > * {
+      direction: ltr;
+    }
+
+    .feature-content .eyebrow {
+      margin-bottom: var(--space-sm);
+    }
+
+    .feature-content h2 {
+      margin-bottom: var(--space-md);
+    }
+
+    .feature-content p {
+      margin-bottom: var(--space-md);
+    }
+
+    .feature-list {
+      list-style: none;
+      margin-top: var(--space-lg);
+    }
+
+    .feature-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-sm);
+      padding: var(--space-sm) 0;
+      color: var(--text-secondary);
+    }
+
+    .feature-list li::before {
+      content: '✓';
+      color: var(--hydrangea-deep);
+      font-weight: 500;
+      flex-shrink: 0;
+    }
+
+    .feature-visual {
+      background: var(--cream);
+      padding: var(--space-xl);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 350px;
+    }
+
+    .feature-section:nth-child(even) .feature-visual {
+      background: var(--cream);
+    }
+
+    .feature-icon-large {
+      font-size: 6rem;
+      color: var(--hydrangea-deep);
+      opacity: 0.8;
+    }
+
+    /* All Features Grid */
+    .all-features {
+      padding: var(--space-2xl) 0;
+      background: var(--sage);
+      color: var(--cream-warm);
+    }
+
+    .all-features h2 {
+      text-align: center;
+      color: var(--cream-warm);
+      margin-bottom: var(--space-xl);
+    }
+
+    .features-grid-full {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-lg);
+    }
+
+    .feature-card {
+      background: rgba(255,255,255,0.1);
+      padding: var(--space-lg);
+      transition: all 0.3s ease;
+    }
+
+    .feature-card:hover {
+      background: rgba(255,255,255,0.15);
+    }
+
+    .feature-card .icon {
+      font-size: 1.5rem;
+      margin-bottom: var(--space-md);
+      color: var(--hydrangea-light);
+    }
+
+    .feature-card h4 {
+      color: var(--cream-warm);
+      margin-bottom: var(--space-sm);
+      font-size: 1.1rem;
+    }
+
+    .feature-card p {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.8);
+      margin: 0;
+    }
+
+    /* Integration Section */
+    .integrations {
+      padding: var(--space-2xl) 0;
+      text-align: center;
+    }
+
+    .integrations h2 {
+      margin-bottom: var(--space-sm);
+    }
+
+    .integrations > p {
+      margin-bottom: var(--space-xl);
+    }
+
+    .integration-logos {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: var(--space-lg);
+      margin-bottom: var(--space-lg);
+    }
+
+    .integration-item {
+      padding: var(--space-md) var(--space-lg);
+      background: var(--cream-warm);
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+
+    .plaid-note {
+      background: var(--cream-warm);
+      padding: var(--space-md);
+      max-width: 600px;
+      margin: 0 auto;
+      border-left: 3px solid var(--hydrangea-deep);
+    }
+
+    .plaid-note p {
+      font-size: 0.9rem;
+      margin: 0;
+    }
+
+    /* CTA Section */
+    .features-cta {
+      padding: var(--space-2xl) 0;
+      background: linear-gradient(135deg, var(--hydrangea-deep) 0%, var(--sage) 100%);
+      color: var(--cream-warm);
+      text-align: center;
+    }
+
+    .features-cta h2 {
+      color: var(--cream-warm);
+      margin-bottom: var(--space-md);
+    }
+
+    .features-cta p {
+      color: rgba(255,255,255,0.9);
+      font-size: 1.1rem;
+      max-width: 500px;
+      margin: 0 auto var(--space-lg);
+    }
+
+    .features-cta .btn-primary {
+      background: var(--cream-warm);
+      color: var(--iron);
+    }
+
+    .features-cta .btn-primary:hover {
+      background: white;
+    }
+
+    @media (max-width: 968px) {
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-grid.reverse {
+        direction: ltr;
+      }
+
+      .features-grid-full {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-visual {
+        min-height: 250px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="container">
+      <a href="index.html" class="logo">Wanderlust<span>Fin</span></a>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="features.html">Features</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="blog.html">Resources</a></li>
+        <li><a href="quiz.html" class="nav-cta">Take the Quiz</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="features-hero">
+    <div class="container">
+      <p class="eyebrow">Platform Features</p>
+      <h1>Everything you need to <em>command</em> your wealth</h1>
+      <p>Total visibility. Intelligent guidance. Zero shame.</p>
+    </div>
+  </section>
+
+  <!-- Feature 1: Account Sync -->
+  <section class="feature-section">
+    <div class="container">
+      <div class="feature-grid">
+        <div class="feature-content">
+          <p class="eyebrow">Core Feature</p>
+          <h2>360° Account Sync</h2>
+          <p>See your complete financial picture in one elegant dashboard. Connect all your accounts securely via Plaid and never wonder where you stand again.</p>
+          <ul class="feature-list">
+            <li>Checking & savings accounts</li>
+            <li>High-yield savings accounts (HYSA)</li>
+            <li>Investment & brokerage accounts</li>
+            <li>Credit cards</li>
+            <li>Insurance accounts</li>
+            <li>Real-time balance updates</li>
+          </ul>
+        </div>
+        <div class="feature-visual">
+          <span class="feature-icon-large">◎</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Feature 2: AI Advisor -->
+  <section class="feature-section">
+    <div class="container">
+      <div class="feature-grid reverse">
+        <div class="feature-content">
+          <p class="eyebrow">Intelligence</p>
+          <h2>AI Wealth Advisor</h2>
+          <p>Like having a financially-savvy best friend who actually gets the entrepreneurial journey. Receive personalized insights based on your patterns, goals, and unique wealth identity.</p>
+          <ul class="feature-list">
+            <li>Personalized spending insights</li>
+            <li>Pattern recognition and alerts</li>
+            <li>Archetype-specific recommendations</li>
+            <li>Goal progress nudges</li>
+            <li>Monthly or weekly insights (by tier)</li>
+            <li>No judgment, just clarity</li>
+          </ul>
+        </div>
+        <div class="feature-visual">
+          <span class="feature-icon-large">✦</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Feature 3: Goal Tracking -->
+  <section class="feature-section">
+    <div class="container">
+      <div class="feature-grid">
+        <div class="feature-content">
+          <p class="eyebrow">Progress</p>
+          <h2>Goal Architecture</h2>
+          <p>Set meaningful goals—from emergency reserves to dream experiences—and watch your progress with visual tracking and milestone celebrations.</p>
+          <ul class="feature-list">
+            <li>Multiple savings goals</li>
+            <li>Visual progress tracking</li>
+            <li>Milestone celebrations</li>
+            <li>Target date projections</li>
+            <li>Contribution recommendations</li>
+            <li>Goal completion rewards</li>
+          </ul>
+        </div>
+        <div class="feature-visual">
+          <span class="feature-icon-large">◇</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Feature 4: Business Goals -->
+  <section class="feature-section">
+    <div class="container">
+      <div class="feature-grid reverse">
+        <div class="feature-content">
+          <p class="eyebrow">For Entrepreneurs</p>
+          <h2>Business Goal Tracker</h2>
+          <p>Track revenue goals, program launches, and business milestones alongside your personal finances. Built for the way entrepreneurs actually think about money.</p>
+          <ul class="feature-list">
+            <li>Revenue target tracking</li>
+            <li>Program/launch goals</li>
+            <li>Business milestone markers</li>
+            <li>Separate from personal goals</li>
+            <li>Progress visualization</li>
+            <li>Quarterly planning support</li>
+          </ul>
+        </div>
+        <div class="feature-visual">
+          <span class="feature-icon-large">↗</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Feature 5: Wealth Identity -->
+  <section class="feature-section">
+    <div class="container">
+      <div class="feature-grid">
+        <div class="feature-content">
+          <p class="eyebrow">Psychology Meets Technology</p>
+          <h2>Wealth Identity System</h2>
+          <p>Discover your archetype, understand your money patterns, and build a relationship with wealth that expands instead of contracts.</p>
+          <ul class="feature-list">
+            <li>Wealth Archetype Quiz</li>
+            <li>Personalized archetype insights</li>
+            <li>Pattern awareness tools</li>
+            <li>Identity-based recommendations</li>
+            <li>Growth tracking over time</li>
+            <li>Behavioral nudges that match your style</li>
+          </ul>
+        </div>
+        <div class="feature-visual">
+          <span class="feature-icon-large">◈</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- All Features Grid -->
+  <section class="all-features">
+    <div class="container">
+      <h2>Every feature, at a glance</h2>
+      <div class="features-grid-full">
+        <div class="feature-card">
+          <div class="icon">◎</div>
+          <h4>Plaid Integration</h4>
+          <p>Bank-level security for all your account connections.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">📊</div>
+          <h4>Beautiful Dashboard</h4>
+          <p>See everything important at a glance with elegant visualizations.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">📱</div>
+          <h4>Mobile App</h4>
+          <p>Check your wealth status anywhere, anytime.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">🎯</div>
+          <h4>Goal Tracking</h4>
+          <p>Visual progress toward what matters most to you.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">✦</div>
+          <h4>AI Insights</h4>
+          <p>Personalized recommendations based on your patterns.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">📈</div>
+          <h4>Spending Analysis</h4>
+          <p>Understand where your money goes without the shame spiral.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">🏦</div>
+          <h4>Reserves Builder</h4>
+          <p>Strategic framework for building your financial cushion.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">📅</div>
+          <h4>Year-Over-Year</h4>
+          <p>See your growth trajectory over time.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">💼</div>
+          <h4>Portfolio Tracking</h4>
+          <p>Monitor investments and see allocation recommendations.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">⚡</div>
+          <h4>Stripe Integration</h4>
+          <p>Connect business revenue for complete visibility.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">🔔</div>
+          <h4>Smart Alerts</h4>
+          <p>Get notified about what matters, not noise.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">🔐</div>
+          <h4>Bank-Level Security</h4>
+          <p>256-bit encryption and industry-standard protection.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Integrations -->
+  <section class="integrations">
+    <div class="container">
+      <h2>Connects with what you use</h2>
+      <p>Securely link your accounts through trusted integrations.</p>
+      
+      <div class="integration-logos">
+        <div class="integration-item">Chase</div>
+        <div class="integration-item">Bank of America</div>
+        <div class="integration-item">Wells Fargo</div>
+        <div class="integration-item">Fidelity</div>
+        <div class="integration-item">Vanguard</div>
+        <div class="integration-item">Charles Schwab</div>
+        <div class="integration-item">American Express</div>
+        <div class="integration-item">Capital One</div>
+        <div class="integration-item">Marcus</div>
+        <div class="integration-item">Ally Bank</div>
+        <div class="integration-item">+ 10,000 more</div>
+      </div>
+
+      <div class="plaid-note">
+        <p><strong>Powered by Plaid:</strong> We use the same secure technology trusted by Venmo, Robinhood, and major financial institutions. We never see or store your bank login credentials.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="features-cta">
+    <div class="container">
+      <h2>Ready to see your complete picture?</h2>
+      <p>Join the waitlist for early access and founding member pricing.</p>
+      <a href="waitlist.html" class="btn btn-primary btn-large">Join the Waitlist</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">Wanderlust<span>Fin</span></a>
+          <p>Your Wealth Identity Operating System. Clarity, not anxiety. Expansion, not restriction.</p>
+        </div>
+        <div class="footer-links">
+          <h5>Product</h5>
+          <ul>
+            <li><a href="features.html">Features</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="quiz.html">Take the Quiz</a></li>
+            <li><a href="waitlist.html">Join Waitlist</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h5>Company</h5>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="blog.html">Resources</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h5>Legal</h5>
+          <ul>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 WanderlustFin LLC. All rights reserved.</p>
+        <p><a href="mailto:hello@wanderlustfin.com">hello@wanderlustfin.com</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelector('.nav-toggle').addEventListener('click', function() {
+      document.querySelector('.nav-links').classList.toggle('active');
+    });
+  </script>
+
+</body>
+</html>
