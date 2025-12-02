@@ -1,0 +1,2288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WanderlustFin.app — Your Wealth Identity Operating System</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      /* Core Palette - Inspired by Amalfi Coast / Italy Photo */
+      --cream: #F5F2ED;
+      --cream-warm: #FAF8F5;
+      --sand: #EBE6DF;
+      --stone-light: #E2DDD5;
+      --sage: #6B7B5E;
+      --sage-light: #8A9A78;
+      --sage-muted: #A8B89A;
+      --sage-deep: #5A6B4E;
+      --slate: #4A5058;
+      --slate-light: #5A6878;
+      --iron: #3D4248;
+      --hydrangea: #8FA3B8;
+      --hydrangea-deep: #6B839C;
+      --hydrangea-light: #B8C5D4;
+      --stone: #C9C2B8;
+      --taupe: #9A9086;
+      --wood: #8B6B4A;
+      --charcoal: #2C3035;
+      --warm-white: #FAF8F5;
+      
+      /* Semantic Colors */
+      --text-primary: var(--iron);
+      --text-secondary: var(--slate);
+      --text-muted: var(--taupe);
+      --bg-primary: var(--cream);
+      --bg-card: var(--warm-white);
+      --accent-primary: var(--hydrangea-deep);
+      --accent-secondary: var(--sage);
+      
+      /* Typography */
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body: 'Jost', sans-serif;
+      
+      /* Spacing */
+      --space-xs: 0.5rem;
+      --space-sm: 1rem;
+      --space-md: 1.5rem;
+      --space-lg: 2.5rem;
+      --space-xl: 4rem;
+      --space-2xl: 6rem;
+      --space-3xl: 10rem;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-body);
+      font-weight: 300;
+      color: var(--text-primary);
+      background: var(--bg-primary);
+      line-height: 1.7;
+      font-size: 16px;
+      letter-spacing: 0.01em;
+    }
+
+    /* Typography */
+    h1, h2, h3, h4, h5 {
+      font-family: var(--font-display);
+      font-weight: 400;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 300;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 400;
+    }
+
+    h3 {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+    }
+
+    p {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+    }
+
+    /* Layout */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--space-md);
+    }
+
+    .section {
+      padding: var(--space-2xl) 0;
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: var(--space-md) 0;
+      background: rgba(247, 245, 240, 0.9);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(107, 123, 94, 0.1);
+    }
+
+    nav .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: var(--text-primary);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+
+    .logo span {
+      color: var(--hydrangea-deep);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: var(--space-lg);
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--hydrangea-deep);
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-block;
+      padding: 1rem 2rem;
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: all 0.4s ease;
+    }
+
+    .btn-primary {
+      background: var(--hydrangea-deep);
+      color: var(--warm-white);
+    }
+
+    .btn-primary:hover {
+      background: var(--iron);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--hydrangea-deep);
+      border: 1px solid var(--hydrangea-deep);
+    }
+
+    .btn-secondary:hover {
+      background: var(--hydrangea-deep);
+      color: var(--warm-white);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text-secondary);
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--sage-muted);
+    }
+
+    .btn-ghost:hover {
+      color: var(--sage);
+      border-color: var(--sage);
+    }
+
+    /* ===================================
+       HERO SECTION
+    =================================== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: var(--space-3xl);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 80%;
+      height: 150%;
+      background: radial-gradient(ellipse at center, rgba(184, 197, 209, 0.2) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-xl);
+      align-items: center;
+    }
+
+    .hero-text {
+      max-width: 600px;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: var(--space-md);
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      width: 40px;
+      height: 1px;
+      background: var(--sage);
+    }
+
+    .hero h1 {
+      margin-bottom: var(--space-md);
+      color: var(--text-primary);
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--sage);
+    }
+
+    .hero-description {
+      font-size: 1.15rem;
+      margin-bottom: var(--space-lg);
+      line-height: 1.8;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: var(--space-md);
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .hero-visual {
+      position: relative;
+    }
+
+    .hero-image-frame {
+      position: relative;
+      padding: var(--space-md);
+    }
+
+    .hero-image-frame::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 80%;
+      height: 100%;
+      border: 1px solid var(--sage-muted);
+      transform: translate(20px, 20px);
+    }
+
+    .hero-mockup {
+      width: 100%;
+      max-width: 350px;
+      height: auto;
+      border-radius: 24px;
+      box-shadow: 0 40px 80px rgba(44, 44, 44, 0.15);
+      background: var(--warm-white);
+      padding: var(--space-lg);
+      position: relative;
+      z-index: 2;
+    }
+
+    /* ===================================
+       PROBLEM/SOLUTION SECTION
+    =================================== */
+    .problem-solution {
+      background: var(--warm-white);
+      position: relative;
+    }
+
+    .problem-solution::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--sage-muted), transparent);
+    }
+
+    .ps-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-2xl);
+    }
+
+    .ps-block {
+      padding: var(--space-xl);
+    }
+
+    .ps-block h3 {
+      margin-bottom: var(--space-md);
+      color: var(--text-primary);
+    }
+
+    .ps-block h3 span {
+      display: block;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--sage);
+      font-family: var(--font-body);
+      font-weight: 400;
+      margin-bottom: var(--space-xs);
+    }
+
+    .ps-list {
+      list-style: none;
+    }
+
+    .ps-list li {
+      padding: var(--space-sm) 0;
+      border-bottom: 1px solid rgba(107, 123, 94, 0.1);
+      color: var(--text-secondary);
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-sm);
+    }
+
+    .ps-list li::before {
+      content: '—';
+      color: var(--sage-muted);
+      flex-shrink: 0;
+    }
+
+    .ps-block.solution .ps-list li::before {
+      content: '✦';
+      color: var(--sage);
+    }
+
+    /* ===================================
+       FEATURES SECTION
+    =================================== */
+    .features {
+      position: relative;
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto var(--space-2xl);
+    }
+
+    .section-header h2 {
+      margin-bottom: var(--space-md);
+    }
+
+    .section-header h2 em {
+      font-style: italic;
+      color: var(--sage);
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-lg);
+    }
+
+    .feature-card {
+      background: var(--warm-white);
+      padding: var(--space-xl);
+      position: relative;
+      transition: all 0.4s ease;
+    }
+
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--sage), var(--hydrangea-deep));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+
+    .feature-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(44, 44, 44, 0.08);
+    }
+
+    .feature-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--cream);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: var(--space-md);
+      font-size: 1.2rem;
+    }
+
+    .feature-card h4 {
+      font-size: 1.3rem;
+      margin-bottom: var(--space-sm);
+      color: var(--text-primary);
+    }
+
+    .feature-card p {
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    /* ===================================
+       QUIZ CTA SECTION
+    =================================== */
+    .quiz-cta {
+      background: linear-gradient(135deg, var(--slate) 0%, var(--sage) 100%);
+      color: var(--warm-white);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .quiz-cta::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at 30% 70%, rgba(255,255,255,0.05) 0%, transparent 50%);
+    }
+
+    .quiz-content {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .quiz-cta h2 {
+      color: var(--warm-white);
+      margin-bottom: var(--space-md);
+    }
+
+    .quiz-cta p {
+      color: rgba(255,255,255,0.85);
+      font-size: 1.1rem;
+      margin-bottom: var(--space-lg);
+    }
+
+    .quiz-cta .btn-primary {
+      background: var(--warm-white);
+      color: var(--sage);
+    }
+
+    .quiz-cta .btn-primary:hover {
+      background: var(--stone-light);
+      color: var(--iron);
+    }
+
+    .archetype-preview {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-md);
+      margin-top: var(--space-xl);
+      flex-wrap: wrap;
+    }
+
+    .archetype-tag {
+      padding: 0.5rem 1rem;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* ===================================
+       PRICING SECTION
+    =================================== */
+    .pricing {
+      background: var(--warm-white);
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-lg);
+      align-items: start;
+    }
+
+    .pricing-card {
+      background: var(--cream);
+      padding: var(--space-xl);
+      position: relative;
+      transition: all 0.4s ease;
+    }
+
+    .pricing-card.featured {
+      background: var(--slate);
+      color: var(--warm-white);
+      transform: scale(1.02);
+      box-shadow: 0 30px 60px rgba(44, 44, 44, 0.2);
+    }
+
+    .pricing-card.featured .pricing-badge {
+      position: absolute;
+      top: 0;
+      right: var(--space-md);
+      background: var(--wood);
+      color: var(--warm-white);
+      padding: 0.5rem 1rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .tier-name {
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: var(--space-xs);
+    }
+
+    .pricing-card.featured .tier-name {
+      color: var(--sage-muted);
+    }
+
+    .tier-title {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 400;
+      margin-bottom: var(--space-sm);
+    }
+
+    .tier-tagline {
+      font-style: italic;
+      font-family: var(--font-display);
+      font-size: 1rem;
+      opacity: 0.8;
+      margin-bottom: var(--space-md);
+    }
+
+    .price {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      font-weight: 300;
+      margin-bottom: var(--space-xs);
+    }
+
+    .pricing-card.featured .price {
+      color: var(--warm-white);
+    }
+
+    .price span {
+      font-size: 1rem;
+      opacity: 0.7;
+    }
+
+    .price-annual {
+      font-size: 0.85rem;
+      opacity: 0.7;
+      margin-bottom: var(--space-lg);
+    }
+
+    .pricing-card.featured .price-annual {
+      color: var(--warm-white);
+    }
+
+    .features-list {
+      list-style: none;
+      margin-bottom: var(--space-lg);
+      border-top: 1px solid rgba(107, 123, 94, 0.2);
+      padding-top: var(--space-md);
+    }
+
+    .pricing-card.featured .features-list {
+      border-color: rgba(255,255,255,0.2);
+    }
+
+    .features-list li {
+      padding: var(--space-xs) 0;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-sm);
+    }
+
+    .features-list li::before {
+      content: '✓';
+      color: var(--sage);
+      font-weight: 500;
+      flex-shrink: 0;
+    }
+
+    .pricing-card.featured .features-list li::before {
+      color: var(--sage-light);
+    }
+
+    .pricing-card .btn {
+      width: 100%;
+      text-align: center;
+    }
+
+    .pricing-card.featured .btn-primary {
+      background: var(--warm-white);
+      color: var(--slate);
+    }
+
+    .pricing-card.featured .btn-primary:hover {
+      background: var(--hydrangea);
+    }
+
+    /* ===================================
+       TESTIMONIALS
+    =================================== */
+    .testimonials {
+      position: relative;
+    }
+
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-lg);
+    }
+
+    .testimonial-card {
+      background: var(--warm-white);
+      padding: var(--space-xl);
+      position: relative;
+    }
+
+    .testimonial-card::before {
+      content: '"';
+      font-family: var(--font-display);
+      font-size: 6rem;
+      color: var(--sage-muted);
+      opacity: 0.3;
+      position: absolute;
+      top: var(--space-md);
+      left: var(--space-md);
+      line-height: 1;
+    }
+
+    .testimonial-text {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-style: italic;
+      line-height: 1.7;
+      margin-bottom: var(--space-md);
+      position: relative;
+      z-index: 2;
+    }
+
+    .testimonial-author {
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+    }
+
+    .testimonial-author strong {
+      display: block;
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+
+    .testimonial-author span {
+      color: var(--sage);
+    }
+
+    /* ===================================
+       FAQ SECTION
+    =================================== */
+    .faq {
+      background: var(--warm-white);
+    }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: var(--space-2xl);
+    }
+
+    .faq-intro h2 {
+      margin-bottom: var(--space-md);
+    }
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--sage-muted);
+      padding-bottom: var(--space-md);
+    }
+
+    .faq-question {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      color: var(--text-primary);
+      margin-bottom: var(--space-sm);
+    }
+
+    .faq-answer {
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    /* ===================================
+       FINAL CTA
+    =================================== */
+    .final-cta {
+      text-align: center;
+      position: relative;
+    }
+
+    .final-cta-content {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .final-cta h2 {
+      margin-bottom: var(--space-md);
+    }
+
+    .final-cta p {
+      font-size: 1.15rem;
+      margin-bottom: var(--space-lg);
+    }
+
+    /* ===================================
+       FOOTER
+    =================================== */
+    footer {
+      background: var(--slate);
+      color: var(--warm-white);
+      padding: var(--space-xl) 0 var(--space-lg);
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: var(--space-xl);
+      margin-bottom: var(--space-xl);
+    }
+
+    .footer-brand .logo {
+      color: var(--warm-white);
+      font-size: 1.3rem;
+      margin-bottom: var(--space-md);
+      display: block;
+    }
+
+    .footer-brand p {
+      color: rgba(255,255,255,0.7);
+      font-size: 0.9rem;
+    }
+
+    .footer-links h5 {
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: var(--space-md);
+      color: var(--sage-muted);
+    }
+
+    .footer-links ul {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: var(--space-xs);
+    }
+
+    .footer-links a {
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--warm-white);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: var(--space-lg);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.5);
+    }
+
+    /* ===================================
+       QUIZ PAGE
+    =================================== */
+    .quiz-page {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-3xl) var(--space-md);
+    }
+
+    .quiz-container {
+      max-width: 700px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .quiz-progress {
+      display: flex;
+      gap: var(--space-xs);
+      justify-content: center;
+      margin-bottom: var(--space-xl);
+    }
+
+    .quiz-progress-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--sage-muted);
+      transition: all 0.3s ease;
+    }
+
+    .quiz-progress-dot.active {
+      background: var(--sage);
+      transform: scale(1.2);
+    }
+
+    .quiz-progress-dot.completed {
+      background: var(--sage);
+    }
+
+    .quiz-question {
+      margin-bottom: var(--space-xl);
+    }
+
+    .quiz-question h3 {
+      font-size: 1.8rem;
+      margin-bottom: var(--space-sm);
+    }
+
+    .quiz-question p {
+      font-size: 1rem;
+      color: var(--text-muted);
+    }
+
+    .quiz-options {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+
+    .quiz-option {
+      padding: var(--space-md) var(--space-lg);
+      background: var(--warm-white);
+      border: 2px solid transparent;
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+    }
+
+    .quiz-option:hover {
+      border-color: var(--sage-muted);
+    }
+
+    .quiz-option.selected {
+      border-color: var(--sage);
+      background: rgba(107, 123, 94, 0.05);
+    }
+
+    .quiz-option-letter {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--cream);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .quiz-option.selected .quiz-option-letter {
+      background: var(--sage);
+      color: var(--warm-white);
+    }
+
+    .quiz-option-text {
+      font-size: 1rem;
+      color: var(--text-primary);
+    }
+
+    /* ===================================
+       RESPONSIVE
+    =================================== */
+    @media (max-width: 968px) {
+      .hero-content,
+      .ps-grid,
+      .features-grid,
+      .pricing-grid,
+      .testimonial-grid,
+      .faq-grid,
+      .footer-content {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-visual {
+        order: -1;
+        text-align: center;
+      }
+
+      .hero-mockup {
+        max-width: 280px;
+        margin: 0 auto;
+      }
+
+      .pricing-card.featured {
+        transform: none;
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+
+    /* ===================================
+       ANIMATIONS
+    =================================== */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-in {
+      animation: fadeInUp 0.8s ease forwards;
+    }
+
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.3s; }
+    .delay-4 { animation-delay: 0.4s; }
+  </style>
+</head>
+<body>
+
+  <!-- ===================================
+       NAVIGATION
+  =================================== -->
+  <nav>
+    <div class="container">
+      <a href="#" class="logo">Wanderlust<span>Fin</span></a>
+      <ul class="nav-links">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#quiz">Take the Quiz</a></li>
+        <li><a href="#" class="btn btn-primary">Get Started</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ===================================
+       HERO SECTION
+  =================================== -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <p class="hero-eyebrow">Your Wealth Identity Operating System</p>
+          <h1>Stop managing money.<br>Start <em>embodying</em> wealth.</h1>
+          <p class="hero-description">
+            WanderlustFin isn't another budgeting app. It's your command center for building a CEO-level relationship with your finances—complete visibility, AI-powered insights, and a wealth identity that grows with you.
+          </p>
+          <div class="hero-cta">
+            <a href="#quiz" class="btn btn-primary">Discover Your Wealth Archetype</a>
+            <a href="#features" class="btn btn-ghost">See How It Works</a>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-image-frame">
+            <div class="hero-mockup">
+              <p style="font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--sage); margin-bottom: 0.5rem;">CEO Dashboard</p>
+              <p style="font-family: var(--font-display); font-size: 2rem; margin-bottom: 1rem;">$25,747.73</p>
+              <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem;">Year-to-date income</p>
+              <div style="display: flex; gap: 1rem;">
+                <div style="flex: 1; background: var(--sage); padding: 1rem; color: white;">
+                  <p style="font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.8; color: white;">Reserves</p>
+                  <p style="font-family: var(--font-display); font-size: 1.2rem; color: white;">$3,333</p>
+                </div>
+                <div style="flex: 1; background: var(--hydrangea-deep); padding: 1rem; color: white;">
+                  <p style="font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.8; color: white;">Portfolio</p>
+                  <p style="font-family: var(--font-display); font-size: 1.2rem; color: white;">$700.58</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================
+       PROBLEM/SOLUTION
+  =================================== -->
+  <section class="problem-solution section">
+    <div class="container">
+      <div class="ps-grid">
+        <div class="ps-block problem">
+          <h3><span>The Old Way</span>You've been told to budget harder.</h3>
+          <ul class="ps-list">
+            <li>Spreadsheets that make you feel like you're failing</li>
+            <li>Apps that focus on restriction, not expansion</li>
+            <li>No visibility across all your accounts and income streams</li>
+            <li>Financial advice that doesn't understand the entrepreneurial path</li>
+            <li>Shame-based money conversations that keep you stuck</li>
+          </ul>
+        </div>
+        <div class="ps-block solution">
+          <h3><span>The WanderlustFin Way</span>Clarity creates confidence.</h3>
+          <ul class="ps-list">
+            <li>See every account, every goal, every stream in one place</li>
+            <li>AI insights that meet you where you are—no judgment</li>
+            <li>Track progress toward goals that actually matter to you</li>
+            <li>Understand your spending patterns without the shame spiral</li>
+            <li>Build reserves and investments with intelligent guidance</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================
+       FEATURES
+  =================================== -->
+  <section class="features section" id="features">
+    <div class="container">
+      <div class="section-header">
+        <h2>Everything you need to <em>command</em> your wealth</h2>
+        <p>Total visibility. Intelligent guidance. Zero shame.</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">◎</div>
+          <h4>360° Account Sync</h4>
+          <p>Securely connect all your accounts via Plaid—checking, savings, stocks, HYSA, insurance, and more. See your complete financial picture in one elegant dashboard.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">✦</div>
+          <h4>AI Financial Advisor</h4>
+          <p>Personalized insights based on your patterns, goals, and wealth archetype. Like having a CFO who actually understands you.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">◇</div>
+          <h4>Goal Architecture</h4>
+          <p>Set meaningful goals—from emergency reserves to dream vacations—and watch your progress with milestone celebrations along the way.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">↗</div>
+          <h4>Portfolio Tracking</h4>
+          <p>Monitor your investments, see your ROI, and get allocation recommendations based on your risk profile and timeline.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">$</div>
+          <h4>Revenue Integration</h4>
+          <p>Connect Stripe, track bookings, and see your business income flow in real-time. Built for entrepreneurs, not employees.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">◈</div>
+          <h4>Wealth Identity System</h4>
+          <p>Discover your archetype, track your growth, and build a relationship with money that expands instead of contracts.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================
+       QUIZ CTA
+  =================================== -->
+  <section class="quiz-cta section" id="quiz">
+    <div class="container">
+      <div class="quiz-content">
+        <h2>What's your Wealth Archetype?</h2>
+        <p>Your relationship with money has a pattern. Understanding your archetype unlocks personalized insights, reveals your growth edges, and shows you the path to your next level of wealth embodiment.</p>
+        <a href="#quiz-page" class="btn btn-primary">Take the 2-Minute Quiz</a>
+        <div class="archetype-preview">
+          <span class="archetype-tag">The Builder</span>
+          <span class="archetype-tag">The Visionary</span>
+          <span class="archetype-tag">The Nurturer</span>
+          <span class="archetype-tag">The Maverick</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================
+       PRICING
+  =================================== -->
+  <section class="pricing section" id="pricing">
+    <div class="container">
+      <div class="section-header">
+        <h2>Choose your path to <em>wealth clarity</em></h2>
+        <p>Every tier includes our core promise: total visibility, zero judgment.</p>
+      </div>
+      <div class="pricing-grid">
+        
+        <!-- Awakening Tier -->
+        <div class="pricing-card">
+          <p class="tier-name">Foundation</p>
+          <h3 class="tier-title">The Awakening</h3>
+          <p class="tier-tagline">"I finally know where I stand."</p>
+          <p class="price">$37<span>/month</span></p>
+          <p class="price-annual">or $297/year (save $147)</p>
+          <ul class="features-list">
+            <li>Connect up to 3 accounts via Plaid</li>
+            <li>Sync checking, savings, stocks, HYSA</li>
+            <li>Basic dashboard & tracking</li>
+            <li>Monthly snapshot summaries</li>
+            <li>Wealth identity quiz + archetype</li>
+            <li>1 savings goal with progress</li>
+            <li>Mobile app access</li>
+          </ul>
+          <a href="#" class="btn btn-secondary">Start Your Awakening</a>
+        </div>
+
+        <!-- Expansion Tier -->
+        <div class="pricing-card featured">
+          <span class="pricing-badge">Most Popular</span>
+          <p class="tier-name">Growth</p>
+          <h3 class="tier-title">The Expansion</h3>
+          <p class="tier-tagline">"I'm building wealth on purpose."</p>
+          <p class="price">$67<span>/month</span></p>
+          <p class="price-annual">or $547/year (save $257)</p>
+          <ul class="features-list">
+            <li>Everything in Awakening, plus:</li>
+            <li>Unlimited Plaid account connections</li>
+            <li>Stocks, insurance, HYSA, all synced</li>
+            <li>Multiple savings goals</li>
+            <li>1 Business Goal Tracker</li>
+            <li>AI Advisor — monthly insights</li>
+            <li>Spending pattern analysis</li>
+            <li>Reserves builder + recommendations</li>
+            <li>Year-over-year comparisons</li>
+            <li>Priority support</li>
+          </ul>
+          <a href="#" class="btn btn-primary">Begin Your Expansion</a>
+        </div>
+
+        <!-- Embodiment Tier -->
+        <div class="pricing-card">
+          <p class="tier-name">Legacy</p>
+          <h3 class="tier-title">The Embodiment</h3>
+          <p class="tier-tagline">"I'm not tracking wealth—I'm embodying it."</p>
+          <p class="price">$127<span>/month</span></p>
+          <p class="price-annual">or $997/year (save $527)</p>
+          <ul class="features-list">
+            <li>Everything in Expansion, plus:</li>
+            <li>Portfolio + investment tracking</li>
+            <li>AI Advisor — weekly insights</li>
+            <li>Unlimited Business Goal Trackers</li>
+            <li>Allocation recommendations</li>
+            <li>Quarterly wealth check-ins</li>
+            <li>Stripe + booking integration</li>
+            <li>Custom dashboard views</li>
+            <li>Early access to new features</li>
+            <li>Founding member badge</li>
+          </ul>
+          <a href="#" class="btn btn-secondary">Embody Your Legacy</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================
+       TESTIMONIALS
+  =================================== -->
+  <section class="testimonials section">
+    <div class="container">
+      <div class="section-header">
+        <h2>What our founding members are saying</h2>
+      </div>
+      <div class="testimonial-grid">
+        <div class="testimonial-card">
+          <p class="testimonial-text">For the first time in my business, I actually know my numbers without the anxiety. WanderlustFin made me feel like a CEO of my money instead of someone just hoping it works out.</p>
+          <p class="testimonial-author">
+            <strong>Sarah M.</strong>
+            <span>Esthetician & Spa Owner</span>
+          </p>
+        </div>
+        <div class="testimonial-card">
+          <p class="testimonial-text">The AI insights are incredible. It's like having a financially-savvy best friend who actually gets the entrepreneurial rollercoaster. No shame, just clarity.</p>
+          <p class="testimonial-author">
+            <strong>Jade T.</strong>
+            <span>Brand Strategist</span>
+          </p>
+        </div>
+        <div class="testimonial-card">
+          <p class="testimonial-text">I went from avoiding my bank app to checking my WanderlustFin dashboard every morning with my coffee. The wealth archetype quiz changed how I see my entire relationship with money.</p>
+          <p class="testimonial-author">
+            <strong>Michelle R.</strong>
+            <span>Business Coach</span>
+          </p>
+        </div>
+        <div class="testimonial-card">
+          <p class="testimonial-text">Finally, a financial tool that doesn't feel like punishment. The reserves builder helped me save my first $10K emergency fund in 6 months. I've never felt this secure.</p>
+          <p class="testimonial-author">
+            <strong>Tanya L.</strong>
+            <span>Hair Stylist & Educator</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================
+       FAQ
+  =================================== -->
+  <section class="faq section" id="faq">
+    <div class="container">
+      <div class="faq-grid">
+        <div class="faq-intro">
+          <h2>Questions we hear often</h2>
+          <p>If yours isn't here, reach out—we love hearing from you.</p>
+        </div>
+        <div class="faq-list">
+          <div class="faq-item">
+            <p class="faq-question">Does WanderlustFin move or transfer my money?</p>
+            <p class="faq-answer">No—and that's intentional. WanderlustFin is a visibility and strategy tool, not a transactional one. We illuminate your finances so you can make empowered decisions. Your money stays exactly where it is; we just help you see it clearly.</p>
+          </div>
+          <div class="faq-item">
+            <p class="faq-question">Is my financial data secure?</p>
+            <p class="faq-answer">Absolutely. We use bank-level 256-bit encryption and never store your login credentials. We partner with Plaid for secure account connections—the same technology used by major financial institutions.</p>
+          </div>
+          <div class="faq-item">
+            <p class="faq-question">What's the wealth archetype quiz about?</p>
+            <p class="faq-answer">Think of it like an Enneagram for your money relationship. The quiz reveals your dominant wealth pattern—Builder, Visionary, Nurturer, or Maverick—and your AI advisor uses this to personalize every insight to how you actually think and operate.</p>
+          </div>
+          <div class="faq-item">
+            <p class="faq-question">Can I upgrade or downgrade my tier?</p>
+            <p class="faq-answer">Yes, anytime. Your data and progress stay with you. If you upgrade, you get immediate access to new features. If you downgrade, you keep access until your current billing period ends.</p>
+          </div>
+          <div class="faq-item">
+            <p class="faq-question">I'm not a business owner. Is this still for me?</p>
+            <p class="faq-answer">Yes. While we built WanderlustFin with entrepreneurs in mind, anyone building toward financial freedom will benefit. If you have goals, income, and a desire to understand your money better, you're exactly who this is for.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================
+       FINAL CTA
+  =================================== -->
+  <section class="final-cta section">
+    <div class="container">
+      <div class="final-cta-content">
+        <h2>Your wealth identity is waiting.</h2>
+        <p>Stop guessing. Stop avoiding. Start seeing your finances with the clarity and confidence of a CEO. Your command center is ready.</p>
+        <a href="#quiz" class="btn btn-primary">Discover Your Archetype & Begin</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================
+       FOOTER
+  =================================== -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <a href="#" class="logo">Wanderlust<span>Fin</span></a>
+          <p>Your wealth identity operating system. Total visibility. Intelligent guidance. Zero shame.</p>
+        </div>
+        <div class="footer-links">
+          <h5>Product</h5>
+          <ul>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#quiz">Wealth Quiz</a></li>
+            <li><a href="#">Roadmap</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h5>Company</h5>
+          <ul>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Careers</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h5>Legal</h5>
+          <ul>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#">Security</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 WanderlustFin. All rights reserved.</p>
+        <p>Made with intention for women building wealth on their own terms.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — WanderlustFin</title>
+  <meta name="description" content="Get in touch with WanderlustFin. We're here to help you on your wealth clarity journey.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/styles.css">
+  
+  <style>
+    .contact-hero {
+      background: var(--cream-warm);
+      padding: calc(var(--space-3xl) + 60px) 0 var(--space-xl);
+      text-align: center;
+    }
+
+    .contact-hero h1 {
+      margin-bottom: var(--space-sm);
+    }
+
+    .contact-section {
+      padding: var(--space-2xl) 0;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-2xl);
+    }
+
+    .contact-info h2 {
+      margin-bottom: var(--space-md);
+    }
+
+    .contact-info > p {
+      margin-bottom: var(--space-lg);
+    }
+
+    .contact-methods {
+      margin-bottom: var(--space-xl);
+    }
+
+    .contact-method {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-md);
+      padding: var(--space-md) 0;
+      border-bottom: 1px solid var(--stone-light);
+    }
+
+    .contact-method:last-child {
+      border-bottom: none;
+    }
+
+    .contact-method .icon {
+      width: 40px;
+      height: 40px;
+      background: var(--hydrangea-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .contact-method h4 {
+      font-size: 1rem;
+      margin-bottom: 4px;
+    }
+
+    .contact-method p {
+      font-size: 0.9rem;
+      margin: 0;
+    }
+
+    .contact-method a {
+      color: var(--hydrangea-deep);
+    }
+
+    .response-note {
+      background: var(--cream-warm);
+      padding: var(--space-md);
+      border-left: 3px solid var(--hydrangea-deep);
+    }
+
+    .response-note p {
+      font-size: 0.9rem;
+      margin: 0;
+    }
+
+    .contact-form-container {
+      background: var(--cream-warm);
+      padding: var(--space-xl);
+    }
+
+    .contact-form-container h2 {
+      margin-bottom: var(--space-md);
+    }
+
+    .contact-form .form-input {
+      background: white;
+    }
+
+    .contact-form .btn {
+      width: 100%;
+    }
+
+    /* FAQ Section */
+    .faq-section {
+      padding: var(--space-2xl) 0;
+      background: var(--cream-warm);
+    }
+
+    .faq-section h2 {
+      text-align: center;
+      margin-bottom: var(--space-xl);
+    }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-lg);
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      background: var(--cream);
+      padding: var(--space-lg);
+    }
+
+    .faq-question {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      color: var(--text-primary);
+      margin-bottom: var(--space-sm);
+    }
+
+    .faq-answer {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    @media (max-width: 968px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .faq-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="container">
+      <a href="index.html" class="logo">Wanderlust<span>Fin</span></a>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="features.html">Features</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="blog.html">Resources</a></li>
+        <li><a href="quiz.html" class="nav-cta">Take the Quiz</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="contact-hero">
+    <div class="container">
+      <p class="eyebrow">Get in Touch</p>
+      <h1>We're here to <em>help</em></h1>
+      <p>Questions about WanderlustFin? We'd love to hear from you.</p>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact-section">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h2>Let's connect</h2>
+          <p>Whether you have questions about features, pricing, or just want to say hello — we're here for you.</p>
+          
+          <div class="contact-methods">
+            <div class="contact-method">
+              <div class="icon">✉</div>
+              <div>
+                <h4>Email Us</h4>
+                <p><a href="mailto:hello@wanderlustfin.com">hello@wanderlustfin.com</a></p>
+              </div>
+            </div>
+            <div class="contact-method">
+              <div class="icon">?</div>
+              <div>
+                <h4>Support</h4>
+                <p><a href="mailto:support@wanderlustfin.com">support@wanderlustfin.com</a></p>
+              </div>
+            </div>
+            <div class="contact-method">
+              <div class="icon">◎</div>
+              <div>
+                <h4>Social</h4>
+                <p><a href="#">@wanderlustfin</a> on Instagram</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="response-note">
+            <p><strong>Response time:</strong> We typically respond within 24-48 hours during business days.</p>
+          </div>
+        </div>
+
+        <div class="contact-form-container">
+          <h2>Send a message</h2>
+          
+          <!-- Contact Form - Replace ACTION with your form handler -->
+          <form class="contact-form" action="YOUR_FORM_HANDLER_URL" method="POST">
+            <div class="form-group">
+              <label class="form-label" for="name">Your Name</label>
+              <input type="text" id="name" name="name" class="form-input" placeholder="Jane Smith" required>
+            </div>
+            
+            <div class="form-group">
+              <label class="form-label" for="email">Email Address</label>
+              <input type="email" id="email" name="email" class="form-input" placeholder="jane@example.com" required>
+            </div>
+            
+            <div class="form-group">
+              <label class="form-label" for="subject">Subject</label>
+              <select id="subject" name="subject" class="form-input">
+                <option value="general">General Question</option>
+                <option value="support">Support Request</option>
+                <option value="partnership">Partnership Inquiry</option>
+                <option value="press">Press / Media</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label class="form-label" for="message">Message</label>
+              <textarea id="message" name="message" class="form-input" placeholder="How can we help you?" required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="faq-section">
+    <div class="container">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-grid">
+        <div class="faq-item">
+          <p class="faq-question">What is WanderlustFin?</p>
+          <p class="faq-answer">WanderlustFin is a wealth identity platform that helps entrepreneurs and high-earners see their complete financial picture, understand their money patterns, and build wealth with clarity and intention.</p>
+        </div>
+        <div class="faq-item">
+          <p class="faq-question">Is my financial data secure?</p>
+          <p class="faq-answer">Absolutely. We use Plaid for all bank connections — the same technology trusted by Venmo, Robinhood, and major financial institutions. We never store your bank login credentials.</p>
+        </div>
+        <div class="faq-item">
+          <p class="faq-question">What's a Wealth Archetype?</p>
+          <p class="faq-answer">Your Wealth Archetype is your unique relationship pattern with money. Understanding it helps you make aligned decisions and build habits that match who you're becoming as a wealth steward.</p>
+        </div>
+        <div class="faq-item">
+          <p class="faq-question">When is WanderlustFin launching?</p>
+          <p class="faq-answer">We're currently in pre-launch. Join our waitlist to get early access and lock in founding member pricing before we open to the public.</p>
+        </div>
+        <div class="faq-item">
+          <p class="faq-question">What accounts can I connect?</p>
+          <p class="faq-answer">Via Plaid, you can connect checking accounts, savings accounts, high-yield savings (HYSA), investment/brokerage accounts, credit cards, and many insurance accounts.</p>
+        </div>
+        <div class="faq-item">
+          <p class="faq-question">Do you offer refunds?</p>
+          <p class="faq-answer">Yes! We offer a 14-Day Clarity Guarantee. If WanderlustFin doesn't bring you more financial clarity within 14 days, we'll refund your first month.</p>
+        </div>
+        <div class="faq-item">
+          <p class="faq-question">Is this a budgeting app?</p>
+          <p class="faq-answer">Not exactly. Traditional budgeting apps focus on restriction. WanderlustFin focuses on expansion, identity, and becoming the person who builds wealth — not just someone who tracks spending.</p>
+        </div>
+        <div class="faq-item">
+          <p class="faq-question">Can I use this for my business finances?</p>
+          <p class="faq-answer">Yes! Our Business Goal Tracker (available in Expansion tier and above) lets you track revenue goals, program launches, and business milestones alongside personal finances.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">Wanderlust<span>Fin</span></a>
+          <p>Your Wealth Identity Operating System. Clarity, not anxiety. Expansion, not restriction.</p>
+        </div>
+        <div class="footer-links">
+          <h5>Product</h5>
+          <ul>
+            <li><a href="features.html">Features</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="quiz.html">Take the Quiz</a></li>
+            <li><a href="waitlist.html">Join Waitlist</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h5>Company</h5>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="blog.html">Resources</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h5>Legal</h5>
+          <ul>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 WanderlustFin LLC. All rights reserved.</p>
+        <p><a href="mailto:hello@wanderlustfin.com">hello@wanderlustfin.com</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelector('.nav-toggle').addEventListener('click', function() {
+      document.querySelector('.nav-links').classList.toggle('active');
+    });
+  </script>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Features — WanderlustFin</title>
+  <meta name="description" content="Discover all the features that make WanderlustFin the wealth identity platform for ambitious entrepreneurs.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/styles.css">
+  
+  <style>
+    .features-hero {
+      background: linear-gradient(180deg, var(--cream-warm) 0%, var(--cream) 100%);
+      padding: calc(var(--space-3xl) + 60px) 0 var(--space-2xl);
+      text-align: center;
+    }
+
+    .features-hero h1 {
+      margin-bottom: var(--space-sm);
+    }
+
+    .features-hero p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .feature-section {
+      padding: var(--space-2xl) 0;
+    }
+
+    .feature-section:nth-child(even) {
+      background: var(--cream-warm);
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-2xl);
+      align-items: center;
+    }
+
+    .feature-grid.reverse {
+      direction: rtl;
+    }
+
+    .feature-grid.reverse > * {
+      direction: ltr;
+    }
+
+    .feature-content .eyebrow {
+      margin-bottom: var(--space-sm);
+    }
+
+    .feature-content h2 {
+      margin-bottom: var(--space-md);
+    }
+
+    .feature-content p {
+      margin-bottom: var(--space-md);
+    }
+
+    .feature-list {
+      list-style: none;
+      margin-top: var(--space-lg);
+    }
+
+    .feature-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-sm);
+      padding: var(--space-sm) 0;
+      color: var(--text-secondary);
+    }
+
+    .feature-list li::before {
+      content: '✓';
+      color: var(--hydrangea-deep);
+      font-weight: 500;
+      flex-shrink: 0;
+    }
+
+    .feature-visual {
+      background: var(--cream);
+      padding: var(--space-xl);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 350px;
+    }
+
+    .feature-section:nth-child(even) .feature-visual {
+      background: var(--cream);
+    }
+
+    .feature-icon-large {
+      font-size: 6rem;
+      color: var(--hydrangea-deep);
+      opacity: 0.8;
+    }
+
+    /* All Features Grid */
+    .all-features {
+      padding: var(--space-2xl) 0;
+      background: var(--sage);
+      color: var(--cream-warm);
+    }
+
+    .all-features h2 {
+      text-align: center;
+      color: var(--cream-warm);
+      margin-bottom: var(--space-xl);
+    }
+
+    .features-grid-full {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-lg);
+    }
+
+    .feature-card {
+      background: rgba(255,255,255,0.1);
+      padding: var(--space-lg);
+      transition: all 0.3s ease;
+    }
+
+    .feature-card:hover {
+      background: rgba(255,255,255,0.15);
+    }
+
+    .feature-card .icon {
+      font-size: 1.5rem;
+      margin-bottom: var(--space-md);
+      color: var(--hydrangea-light);
+    }
+
+    .feature-card h4 {
+      color: var(--cream-warm);
+      margin-bottom: var(--space-sm);
+      font-size: 1.1rem;
+    }
+
+    .feature-card p {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.8);
+      margin: 0;
+    }
+
+    /* Integration Section */
+    .integrations {
+      padding: var(--space-2xl) 0;
+      text-align: center;
+    }
+
+    .integrations h2 {
+      margin-bottom: var(--space-sm);
+    }
+
+    .integrations > p {
+      margin-bottom: var(--space-xl);
+    }
+
+    .integration-logos {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: var(--space-lg);
+      margin-bottom: var(--space-lg);
+    }
+
+    .integration-item {
+      padding: var(--space-md) var(--space-lg);
+      background: var(--cream-warm);
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+
+    .plaid-note {
+      background: var(--cream-warm);
+      padding: var(--space-md);
+      max-width: 600px;
+      margin: 0 auto;
+      border-left: 3px solid var(--hydrangea-deep);
+    }
+
+    .plaid-note p {
+      font-size: 0.9rem;
+      margin: 0;
+    }
+
+    /* CTA Section */
+    .features-cta {
+      padding: var(--space-2xl) 0;
+      background: linear-gradient(135deg, var(--hydrangea-deep) 0%, var(--sage) 100%);
+      color: var(--cream-warm);
+      text-align: center;
+    }
+
+    .features-cta h2 {
+      color: var(--cream-warm);
+      margin-bottom: var(--space-md);
+    }
+
+    .features-cta p {
+      color: rgba(255,255,255,0.9);
+      font-size: 1.1rem;
+      max-width: 500px;
+      margin: 0 auto var(--space-lg);
+    }
+
+    .features-cta .btn-primary {
+      background: var(--cream-warm);
+      color: var(--iron);
+    }
+
+    .features-cta .btn-primary:hover {
+      background: white;
+    }
+
+    @media (max-width: 968px) {
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-grid.reverse {
+        direction: ltr;
+      }
+
+      .features-grid-full {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-visual {
+        min-height: 250px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="container">
+      <a href="index.html" class="logo">Wanderlust<span>Fin</span></a>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="features.html">Features</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="blog.html">Resources</a></li>
+        <li><a href="quiz.html" class="nav-cta">Take the Quiz</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="features-hero">
+    <div class="container">
+      <p class="eyebrow">Platform Features</p>
+      <h1>Everything you need to <em>command</em> your wealth</h1>
+      <p>Total visibility. Intelligent guidance. Zero shame.</p>
+    </div>
+  </section>
+
+  <!-- Feature 1: Account Sync -->
+  <section class="feature-section">
+    <div class="container">
+      <div class="feature-grid">
+        <div class="feature-content">
+          <p class="eyebrow">Core Feature</p>
+          <h2>360° Account Sync</h2>
+          <p>See your complete financial picture in one elegant dashboard. Connect all your accounts securely via Plaid and never wonder where you stand again.</p>
+          <ul class="feature-list">
+            <li>Checking & savings accounts</li>
+            <li>High-yield savings accounts (HYSA)</li>
+            <li>Investment & brokerage accounts</li>
+            <li>Credit cards</li>
+            <li>Insurance accounts</li>
+            <li>Real-time balance updates</li>
+          </ul>
+        </div>
+        <div class="feature-visual">
+          <span class="feature-icon-large">◎</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Feature 2: AI Advisor -->
+  <section class="feature-section">
+    <div class="container">
+      <div class="feature-grid reverse">
+        <div class="feature-content">
+          <p class="eyebrow">Intelligence</p>
+          <h2>AI Wealth Advisor</h2>
+          <p>Like having a financially-savvy best friend who actually gets the entrepreneurial journey. Receive personalized insights based on your patterns, goals, and unique wealth identity.</p>
+          <ul class="feature-list">
+            <li>Personalized spending insights</li>
+            <li>Pattern recognition and alerts</li>
+            <li>Archetype-specific recommendations</li>
+            <li>Goal progress nudges</li>
+            <li>Monthly or weekly insights (by tier)</li>
+            <li>No judgment, just clarity</li>
+          </ul>
+        </div>
+        <div class="feature-visual">
+          <span class="feature-icon-large">✦</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Feature 3: Goal Tracking -->
+  <section class="feature-section">
+    <div class="container">
+      <div class="feature-grid">
+        <div class="feature-content">
+          <p class="eyebrow">Progress</p>
+          <h2>Goal Architecture</h2>
+          <p>Set meaningful goals—from emergency reserves to dream experiences—and watch your progress with visual tracking and milestone celebrations.</p>
+          <ul class="feature-list">
+            <li>Multiple savings goals</li>
+            <li>Visual progress tracking</li>
+            <li>Milestone celebrations</li>
+            <li>Target date projections</li>
+            <li>Contribution recommendations</li>
+            <li>Goal completion rewards</li>
+          </ul>
+        </div>
+        <div class="feature-visual">
+          <span class="feature-icon-large">◇</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Feature 4: Business Goals -->
+  <section class="feature-section">
+    <div class="container">
+      <div class="feature-grid reverse">
+        <div class="feature-content">
+          <p class="eyebrow">For Entrepreneurs</p>
+          <h2>Business Goal Tracker</h2>
+          <p>Track revenue goals, program launches, and business milestones alongside your personal finances. Built for the way entrepreneurs actually think about money.</p>
+          <ul class="feature-list">
+            <li>Revenue target tracking</li>
+            <li>Program/launch goals</li>
+            <li>Business milestone markers</li>
+            <li>Separate from personal goals</li>
+            <li>Progress visualization</li>
+            <li>Quarterly planning support</li>
+          </ul>
+        </div>
+        <div class="feature-visual">
+          <span class="feature-icon-large">↗</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Feature 5: Wealth Identity -->
+  <section class="feature-section">
+    <div class="container">
+      <div class="feature-grid">
+        <div class="feature-content">
+          <p class="eyebrow">Psychology Meets Technology</p>
+          <h2>Wealth Identity System</h2>
+          <p>Discover your archetype, understand your money patterns, and build a relationship with wealth that expands instead of contracts.</p>
+          <ul class="feature-list">
+            <li>Wealth Archetype Quiz</li>
+            <li>Personalized archetype insights</li>
+            <li>Pattern awareness tools</li>
+            <li>Identity-based recommendations</li>
+            <li>Growth tracking over time</li>
+            <li>Behavioral nudges that match your style</li>
+          </ul>
+        </div>
+        <div class="feature-visual">
+          <span class="feature-icon-large">◈</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- All Features Grid -->
+  <section class="all-features">
+    <div class="container">
+      <h2>Every feature, at a glance</h2>
+      <div class="features-grid-full">
+        <div class="feature-card">
+          <div class="icon">◎</div>
+          <h4>Plaid Integration</h4>
+          <p>Bank-level security for all your account connections.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">📊</div>
+          <h4>Beautiful Dashboard</h4>
+          <p>See everything important at a glance with elegant visualizations.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">📱</div>
+          <h4>Mobile App</h4>
+          <p>Check your wealth status anywhere, anytime.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">🎯</div>
+          <h4>Goal Tracking</h4>
+          <p>Visual progress toward what matters most to you.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">✦</div>
+          <h4>AI Insights</h4>
+          <p>Personalized recommendations based on your patterns.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">📈</div>
+          <h4>Spending Analysis</h4>
+          <p>Understand where your money goes without the shame spiral.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">🏦</div>
+          <h4>Reserves Builder</h4>
+          <p>Strategic framework for building your financial cushion.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">📅</div>
+          <h4>Year-Over-Year</h4>
+          <p>See your growth trajectory over time.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">💼</div>
+          <h4>Portfolio Tracking</h4>
+          <p>Monitor investments and see allocation recommendations.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">⚡</div>
+          <h4>Stripe Integration</h4>
+          <p>Connect business revenue for complete visibility.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">🔔</div>
+          <h4>Smart Alerts</h4>
+          <p>Get notified about what matters, not noise.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">🔐</div>
+          <h4>Bank-Level Security</h4>
+          <p>256-bit encryption and industry-standard protection.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Integrations -->
+  <section class="integrations">
+    <div class="container">
+      <h2>Connects with what you use</h2>
+      <p>Securely link your accounts through trusted integrations.</p>
+      
+      <div class="integration-logos">
+        <div class="integration-item">Chase</div>
+        <div class="integration-item">Bank of America</div>
+        <div class="integration-item">Wells Fargo</div>
+        <div class="integration-item">Fidelity</div>
+        <div class="integration-item">Vanguard</div>
+        <div class="integration-item">Charles Schwab</div>
+        <div class="integration-item">American Express</div>
+        <div class="integration-item">Capital One</div>
+        <div class="integration-item">Marcus</div>
+        <div class="integration-item">Ally Bank</div>
+        <div class="integration-item">+ 10,000 more</div>
+      </div>
+
+      <div class="plaid-note">
+        <p><strong>Powered by Plaid:</strong> We use the same secure technology trusted by Venmo, Robinhood, and major financial institutions. We never see or store your bank login credentials.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="features-cta">
+    <div class="container">
+      <h2>Ready to see your complete picture?</h2>
+      <p>Join the waitlist for early access and founding member pricing.</p>
+      <a href="waitlist.html" class="btn btn-primary btn-large">Join the Waitlist</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">Wanderlust<span>Fin</span></a>
+          <p>Your Wealth Identity Operating System. Clarity, not anxiety. Expansion, not restriction.</p>
+        </div>
+        <div class="footer-links">
+          <h5>Product</h5>
+          <ul>
+            <li><a href="features.html">Features</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="quiz.html">Take the Quiz</a></li>
+            <li><a href="waitlist.html">Join Waitlist</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h5>Company</h5>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="blog.html">Resources</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h5>Legal</h5>
+          <ul>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 WanderlustFin LLC. All rights reserved.</p>
+        <p><a href="mailto:hello@wanderlustfin.com">hello@wanderlustfin.com</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelector('.nav-toggle').addEventListener('click', function() {
+      document.querySelector('.nav-links').classList.toggle('active');
+    });
+  </script>
+
+</body>
+</html>
