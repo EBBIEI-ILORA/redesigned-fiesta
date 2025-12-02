@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms of Service — WanderlustFin</title>
+  <meta name="description" content="WanderlustFin Terms of Service. Please read these terms carefully before using our service.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/styles.css">
+  
+  <style>
+    .legal-page {
+      padding: calc(var(--space-3xl) + 60px) 0 var(--space-2xl);
+    }
+
+    .legal-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .legal-content h1 {
+      margin-bottom: var(--space-sm);
+    }
+
+    .legal-meta {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: var(--space-xl);
+      padding-bottom: var(--space-md);
+      border-bottom: 1px solid var(--stone-light);
+    }
+
+    .legal-content h2 {
+      font-size: 1.5rem;
+      margin-top: var(--space-xl);
+      margin-bottom: var(--space-md);
+    }
+
+    .legal-content h3 {
+      font-size: 1.2rem;
+      margin-top: var(--space-lg);
+      margin-bottom: var(--space-sm);
+    }
+
+    .legal-content p {
+      margin-bottom: var(--space-md);
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+
+    .legal-content ul, .legal-content ol {
+      margin-bottom: var(--space-md);
+      padding-left: var(--space-lg);
+    }
+
+    .legal-content li {
+      margin-bottom: var(--space-xs);
+      line-height: 1.7;
+      color: var(--text-secondary);
+    }
+
+    .legal-content a {
+      color: var(--hydrangea-deep);
+    }
+
+    .highlight-box {
+      background: var(--cream-warm);
+      padding: var(--space-md);
+      border-left: 3px solid var(--hydrangea-deep);
+      margin: var(--space-lg) 0;
+    }
+
+    .highlight-box p {
+      margin: 0;
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="container">
+      <a href="index.html" class="logo">Wanderlust<span>Fin</span></a>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="features.html">Features</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="blog.html">Resources</a></li>
+        <li><a href="quiz.html" class="nav-cta">Take the Quiz</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Content -->
+  <section class="legal-page">
+    <div class="container">
+      <div class="legal-content">
+        <h1>Terms of Service</h1>
+        <p class="legal-meta">Last updated: January 2025</p>
+
+        <p>Welcome to WanderlustFin. These Terms of Service ("Terms") govern your use of the WanderlustFin website, mobile application, and services (collectively, the "Service") operated by WanderlustFin LLC ("WanderlustFin," "we," "us," or "our").</p>
+
+        <p>By accessing or using our Service, you agree to be bound by these Terms. If you do not agree to these Terms, please do not use our Service.</p>
+
+        <h2>1. Description of Service</h2>
+        <p>WanderlustFin is a personal finance platform that helps users visualize their financial data, track goals, and receive personalized insights. Our Service includes:</p>
+        <ul>
+          <li>Financial account aggregation via Plaid</li>
+          <li>Dashboard and visualization tools</li>
+          <li>Goal tracking features</li>
+          <li>AI-powered insights and recommendations</li>
+          <li>Wealth archetype assessment</li>
+        </ul>
+
+        <div class="highlight-box">
+          <p><strong>Important:</strong> WanderlustFin is an informational tool. We do not provide financial, investment, tax, or legal advice. Our insights are for educational purposes only. Always consult qualified professionals for financial decisions.</p>
+        </div>
+
+        <h2>2. Account Registration</h2>
+        <p>To use our Service, you must:</p>
+        <ul>
+          <li>Be at least 18 years old</li>
+          <li>Provide accurate and complete registration information</li>
+          <li>Maintain the security of your account credentials</li>
+          <li>Notify us immediately of any unauthorized use</li>
+        </ul>
+        <p>You are responsible for all activities that occur under your account.</p>
+
+        <h2>3. Subscription and Payment</h2>
+        
+        <h3>3.1 Billing</h3>
+        <p>WanderlustFin offers subscription-based pricing. By subscribing, you authorize us to charge your payment method on a recurring basis until you cancel.</p>
+
+        <h3>3.2 Price Changes</h3>
+        <p>We may change subscription prices with 30 days' notice. Price changes do not affect current billing cycles.</p>
+
+        <h3>3.3 Refunds</h3>
+        <p>We offer a 14-Day Clarity Guarantee for new subscribers. If you're not satisfied within the first 14 days, contact us for a full refund of your first month. After 14 days, subscriptions are non-refundable.</p>
+
+        <h3>3.4 Cancellation</h3>
+        <p>You may cancel your subscription at any time through your account settings. Cancellation takes effect at the end of your current billing period. You will retain access until then.</p>
+
+        <h2>4. Financial Data and Plaid</h2>
+        
+        <h3>4.1 Account Connection</h3>
+        <p>Our Service uses Plaid Inc. to connect your financial accounts. By using this feature, you also agree to Plaid's terms and privacy policy.</p>
+
+        <h3>4.2 Data Accuracy</h3>
+        <p>We display financial data as received from your institutions via Plaid. We do not guarantee the accuracy, completeness, or timeliness of this data. Always verify important financial information directly with your financial institutions.</p>
+
+        <h3>4.3 No Transactions</h3>
+        <p>WanderlustFin is a read-only service. We cannot initiate transactions, transfers, or changes to your financial accounts.</p>
+
+        <h2>5. Acceptable Use</h2>
+        <p>You agree not to:</p>
+        <ul>
+          <li>Use the Service for any illegal purpose</li>
+          <li>Attempt to gain unauthorized access to our systems</li>
+          <li>Interfere with or disrupt the Service</li>
+          <li>Reverse engineer or attempt to extract source code</li>
+          <li>Use the Service to harm, harass, or defraud others</li>
+          <li>Share your account credentials with others</li>
+          <li>Use automated systems to access the Service without permission</li>
+          <li>Violate any applicable laws or regulations</li>
+        </ul>
+
+        <h2>6. Intellectual Property</h2>
+        <p>The Service, including all content, features, and functionality, is owned by WanderlustFin and protected by intellectual property laws. You may not copy, modify, distribute, or create derivative works without our written permission.</p>
+        <p>Your use of the Service grants you a limited, non-exclusive, non-transferable license to access and use the Service for personal, non-commercial purposes.</p>
+
+        <h2>7. User Content</h2>
+        <p>You retain ownership of any content you submit to the Service. By submitting content, you grant us a license to use, display, and process that content as necessary to provide the Service.</p>
+
+        <h2>8. Disclaimer of Warranties</h2>
+        <p>THE SERVICE IS PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED. WE DO NOT WARRANT THAT THE SERVICE WILL BE UNINTERRUPTED, ERROR-FREE, OR COMPLETELY SECURE.</p>
+        <p>WE SPECIFICALLY DISCLAIM ANY IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.</p>
+
+        <h2>9. Limitation of Liability</h2>
+        <p>TO THE MAXIMUM EXTENT PERMITTED BY LAW, WANDERLUSTFIN SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, INCLUDING BUT NOT LIMITED TO LOSS OF PROFITS, DATA, OR GOODWILL.</p>
+        <p>OUR TOTAL LIABILITY FOR ANY CLAIMS ARISING FROM YOUR USE OF THE SERVICE SHALL NOT EXCEED THE AMOUNT YOU PAID US IN THE TWELVE (12) MONTHS PRECEDING THE CLAIM.</p>
+
+        <h2>10. Indemnification</h2>
+        <p>You agree to indemnify and hold harmless WanderlustFin, its officers, directors, employees, and agents from any claims, damages, losses, or expenses arising from your use of the Service or violation of these Terms.</p>
+
+        <h2>11. Termination</h2>
+        <p>We may suspend or terminate your access to the Service at any time, with or without cause, with or without notice. Upon termination, your right to use the Service ceases immediately.</p>
+        <p>Provisions that by their nature should survive termination will survive, including ownership, warranty disclaimers, indemnification, and limitations of liability.</p>
+
+        <h2>12. Changes to Terms</h2>
+        <p>We may modify these Terms at any time. We will notify you of material changes by email or through the Service. Your continued use after changes constitutes acceptance of the modified Terms.</p>
+
+        <h2>13. Governing Law</h2>
+        <p>These Terms are governed by the laws of the State of Delaware, without regard to conflict of law principles. Any disputes shall be resolved in the courts located in Delaware.</p>
+
+        <h2>14. Dispute Resolution</h2>
+        <p>Before filing a legal claim, you agree to attempt to resolve any dispute informally by contacting us at <a href="mailto:legal@wanderlustfin.com">legal@wanderlustfin.com</a>. We will attempt to resolve the dispute within 30 days.</p>
+
+        <h2>15. Severability</h2>
+        <p>If any provision of these Terms is found unenforceable, the remaining provisions will continue in full force and effect.</p>
+
+        <h2>16. Entire Agreement</h2>
+        <p>These Terms, together with our Privacy Policy, constitute the entire agreement between you and WanderlustFin regarding the Service.</p>
+
+        <h2>17. Contact Information</h2>
+        <p>For questions about these Terms, contact us at:</p>
+        <p>
+          <strong>WanderlustFin LLC</strong><br>
+          Email: <a href="mailto:legal@wanderlustfin.com">legal@wanderlustfin.com</a><br>
+          General: <a href="mailto:hello@wanderlustfin.com">hello@wanderlustfin.com</a>
+        </p>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">Wanderlust<span>Fin</span></a>
+          <p>Your Wealth Identity Operating System. Clarity, not anxiety. Expansion, not restriction.</p>
+        </div>
+        <div class="footer-links">
+          <h5>Product</h5>
+          <ul>
+            <li><a href="features.html">Features</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="quiz.html">Take the Quiz</a></li>
+            <li><a href="waitlist.html">Join Waitlist</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h5>Company</h5>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="blog.html">Resources</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h5>Legal</h5>
+          <ul>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 WanderlustFin LLC. All rights reserved.</p>
+        <p><a href="mailto:hello@wanderlustfin.com">hello@wanderlustfin.com</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelector('.nav-toggle').addEventListener('click', function() {
+      document.querySelector('.nav-links').classList.toggle('active');
+    });
+  </script>
+
+</body>
+</html>
