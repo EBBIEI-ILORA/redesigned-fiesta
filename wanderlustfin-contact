@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — WanderlustFin</title>
+  <meta name="description" content="Get in touch with WanderlustFin. We're here to help you on your wealth clarity journey.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/styles.css">
+  
+  <style>
+    .contact-hero {
+      background: var(--cream-warm);
+      padding: calc(var(--space-3xl) + 60px) 0 var(--space-xl);
+      text-align: center;
+    }
+
+    .contact-hero h1 {
+      margin-bottom: var(--space-sm);
+    }
+
+    .contact-section {
+      padding: var(--space-2xl) 0;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-2xl);
+    }
+
+    .contact-info h2 {
+      margin-bottom: var(--space-md);
+    }
+
+    .contact-info > p {
+      margin-bottom: var(--space-lg);
+    }
+
+    .contact-methods {
+      margin-bottom: var(--space-xl);
+    }
+
+    .contact-method {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-md);
+      padding: var(--space-md) 0;
+      border-bottom: 1px solid var(--stone-light);
+    }
+
+    .contact-method:last-child {
+      border-bottom: none;
+    }
+
+    .contact-method .icon {
+      width: 40px;
+      height: 40px;
+      background: var(--hydrangea-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .contact-method h4 {
+      font-size: 1rem;
+      margin-bottom: 4px;
+    }
+
+    .contact-method p {
+      font-size: 0.9rem;
+      margin: 0;
+    }
+
+    .contact-method a {
+      color: var(--hydrangea-deep);
+    }
+
+    .response-note {
+      background: var(--cream-warm);
+      padding: var(--space-md);
+      border-left: 3px solid var(--hydrangea-deep);
+    }
+
+    .response-note p {
+      font-size: 0.9rem;
+      margin: 0;
+    }
+
+    .contact-form-container {
+      background: var(--cream-warm);
+      padding: var(--space-xl);
+    }
+
+    .contact-form-container h2 {
+      margin-bottom: var(--space-md);
+    }
+
+    .contact-form .form-input {
+      background: white;
+    }
+
+    .contact-form .btn {
+      width: 100%;
+    }
+
+    /* FAQ Section */
+    .faq-section {
+      padding: var(--space-2xl) 0;
+      background: var(--cream-warm);
+    }
+
+    .faq-section h2 {
+      text-align: center;
+      margin-bottom: var(--space-xl);
+    }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-lg);
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      background: var(--cream);
+      padding: var(--space-lg);
+    }
+
+    .faq-question {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      color: var(--text-primary);
+      margin-bottom: var(--space-sm);
+    }
+
+    .faq-answer {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    @media (max-width: 968px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .faq-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="container">
+      <a href="index.html" class="logo">Wanderlust<span>Fin</span></a>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="features.html">Features</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="blog.html">Resources</a></li>
+        <li><a href="quiz.html" class="nav-cta">Take the Quiz</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="contact-hero">
+    <div class="container">
+      <p class="eyebrow">Get in Touch</p>
+      <h1>We're here to <em>help</em></h1>
+      <p>Questions about WanderlustFin? We'd love to hear from you.</p>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact-section">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h2>Let's connect</h2>
+          <p>Whether you have questions about features, pricing, or just want to say hello — we're here for you.</p>
+          
+          <div class="contact-methods">
+            <div class="contact-method">
+              <div class="icon">✉</div>
+              <div>
+                <h4>Email Us</h4>
+                <p><a href="mailto:hello@wanderlustfin.com">hello@wanderlustfin.com</a></p>
+              </div>
+            </div>
+            <div class="contact-method">
+              <div class="icon">?</div>
+              <div>
+                <h4>Support</h4>
+                <p><a href="mailto:support@wanderlustfin.com">support@wanderlustfin.com</a></p>
+              </div>
+            </div>
+            <div class="contact-method">
+              <div class="icon">◎</div>
+              <div>
+                <h4>Social</h4>
+                <p><a href="#">@wanderlustfin</a> on Instagram</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="response-note">
+            <p><strong>Response time:</strong> We typically respond within 24-48 hours during business days.</p>
+          </div>
+        </div>
+
+        <div class="contact-form-container">
+          <h2>Send a message</h2>
+          
+          <!-- Contact Form - Replace ACTION with your form handler -->
+          <form class="contact-form" action="YOUR_FORM_HANDLER_URL" method="POST">
+            <div class="form-group">
+              <label class="form-label" for="name">Your Name</label>
+              <input type="text" id="name" name="name" class="form-input" placeholder="Jane Smith" required>
+            </div>
+            
+            <div class="form-group">
+              <label class="form-label" for="email">Email Address</label>
+              <input type="email" id="email" name="email" class="form-input" placeholder="jane@example.com" required>
+            </div>
+            
+            <div class="form-group">
+              <label class="form-label" for="subject">Subject</label>
+              <select id="subject" name="subject" class="form-input">
+                <option value="general">General Question</option>
+                <option value="support">Support Request</option>
+                <option value="partnership">Partnership Inquiry</option>
+                <option value="press">Press / Media</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label class="form-label" for="message">Message</label>
+              <textarea id="message" name="message" class="form-input" placeholder="How can we help you?" required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="faq-section">
+    <div class="container">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-grid">
+        <div class="faq-item">
+          <p class="faq-question">What is WanderlustFin?</p>
+          <p class="faq-answer">WanderlustFin is a wealth identity platform that helps entrepreneurs and high-earners see their complete financial picture, understand their money patterns, and build wealth with clarity and intention.</p>
+        </div>
+        <div class="faq-item">
+          <p class="faq-question">Is my financial data secure?</p>
+          <p class="faq-answer">Absolutely. We use Plaid for all bank connections — the same technology trusted by Venmo, Robinhood, and major financial institutions. We never store your bank login credentials.</p>
+        </div>
+        <div class="faq-item">
+          <p class="faq-question">What's a Wealth Archetype?</p>
+          <p class="faq-answer">Your Wealth Archetype is your unique relationship pattern with money. Understanding it helps you make aligned decisions and build habits that match who you're becoming as a wealth steward.</p>
+        </div>
+        <div class="faq-item">
+          <p class="faq-question">When is WanderlustFin launching?</p>
+          <p class="faq-answer">We're currently in pre-launch. Join our waitlist to get early access and lock in founding member pricing before we open to the public.</p>
+        </div>
+        <div class="faq-item">
+          <p class="faq-question">What accounts can I connect?</p>
+          <p class="faq-answer">Via Plaid, you can connect checking accounts, savings accounts, high-yield savings (HYSA), investment/brokerage accounts, credit cards, and many insurance accounts.</p>
+        </div>
+        <div class="faq-item">
+          <p class="faq-question">Do you offer refunds?</p>
+          <p class="faq-answer">Yes! We offer a 14-Day Clarity Guarantee. If WanderlustFin doesn't bring you more financial clarity within 14 days, we'll refund your first month.</p>
+        </div>
+        <div class="faq-item">
+          <p class="faq-question">Is this a budgeting app?</p>
+          <p class="faq-answer">Not exactly. Traditional budgeting apps focus on restriction. WanderlustFin focuses on expansion, identity, and becoming the person who builds wealth — not just someone who tracks spending.</p>
+        </div>
+        <div class="faq-item">
+          <p class="faq-question">Can I use this for my business finances?</p>
+          <p class="faq-answer">Yes! Our Business Goal Tracker (available in Expansion tier and above) lets you track revenue goals, program launches, and business milestones alongside personal finances.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">Wanderlust<span>Fin</span></a>
+          <p>Your Wealth Identity Operating System. Clarity, not anxiety. Expansion, not restriction.</p>
+        </div>
+        <div class="footer-links">
+          <h5>Product</h5>
+          <ul>
+            <li><a href="features.html">Features</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="quiz.html">Take the Quiz</a></li>
+            <li><a href="waitlist.html">Join Waitlist</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h5>Company</h5>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="blog.html">Resources</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h5>Legal</h5>
+          <ul>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 WanderlustFin LLC. All rights reserved.</p>
+        <p><a href="mailto:hello@wanderlustfin.com">hello@wanderlustfin.com</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelector('.nav-toggle').addEventListener('click', function() {
+      document.querySelector('.nav-links').classList.toggle('active');
+    });
+  </script>
+
+</body>
+</html>
