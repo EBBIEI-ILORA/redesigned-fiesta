@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Join the Waitlist — WanderlustFin</title>
+  <meta name="description" content="Be the first to experience WanderlustFin. Join our waitlist for early access and founding member pricing.">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Join the Waitlist — WanderlustFin">
+  <meta property="og:description" content="Wealth technology for a new era. Get early access and founding member pricing.">
+  <meta property="og:type" content="website">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/styles.css">
+  
+  <style>
+    .waitlist-page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .waitlist-hero {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      padding: calc(var(--space-3xl) + 60px) 0 var(--space-2xl);
+      background: linear-gradient(180deg, var(--cream-warm) 0%, var(--cream) 100%);
+    }
+
+    .waitlist-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-2xl);
+      align-items: center;
+    }
+
+    .waitlist-content h1 {
+      margin-bottom: var(--space-md);
+    }
+
+    .waitlist-content .lead {
+      font-size: 1.2rem;
+      margin-bottom: var(--space-lg);
+      color: var(--text-secondary);
+    }
+
+    .benefits-list {
+      list-style: none;
+      margin-bottom: var(--space-lg);
+    }
+
+    .benefits-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-sm);
+      padding: var(--space-sm) 0;
+      font-size: 1rem;
+      color: var(--text-secondary);
+    }
+
+    .benefits-list li::before {
+      content: '✦';
+      color: var(--hydrangea-deep);
+      flex-shrink: 0;
+    }
+
+    .waitlist-form-container {
+      background: var(--cream-warm);
+      padding: var(--space-xl);
+      box-shadow: 0 20px 60px rgba(61, 66, 72, 0.1);
+    }
+
+    .waitlist-form-container h2 {
+      font-size: 1.5rem;
+      margin-bottom: var(--space-xs);
+    }
+
+    .waitlist-form-container .form-subtitle {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: var(--space-lg);
+    }
+
+    .waitlist-form .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-md);
+    }
+
+    .waitlist-form .form-group {
+      margin-bottom: var(--space-md);
+    }
+
+    .waitlist-form .form-input {
+      background: white;
+    }
+
+    .waitlist-form .btn {
+      width: 100%;
+      padding: 1.25rem 2rem;
+      margin-top: var(--space-sm);
+    }
+
+    .form-note {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-align: center;
+      margin-top: var(--space-md);
+    }
+
+    .social-proof {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      margin-top: var(--space-lg);
+      padding-top: var(--space-lg);
+      border-top: 1px solid var(--stone-light);
+    }
+
+    .proof-avatars {
+      display: flex;
+    }
+
+    .proof-avatars span {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--hydrangea-light);
+      border: 2px solid var(--cream-warm);
+      margin-left: -10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      color: var(--iron);
+    }
+
+    .proof-avatars span:first-child {
+      margin-left: 0;
+    }
+
+    .proof-text {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .proof-text strong {
+      color: var(--text-primary);
+    }
+
+    /* Success State */
+    .success-message {
+      display: none;
+      text-align: center;
+      padding: var(--space-xl);
+    }
+
+    .success-message.show {
+      display: block;
+    }
+
+    .success-message .icon {
+      font-size: 3rem;
+      margin-bottom: var(--space-md);
+    }
+
+    .success-message h2 {
+      margin-bottom: var(--space-sm);
+    }
+
+    .success-message p {
+      margin-bottom: var(--space-md);
+    }
+
+    /* What's Coming Section */
+    .coming-soon {
+      padding: var(--space-2xl) 0;
+      background: var(--cream);
+    }
+
+    .coming-soon h2 {
+      text-align: center;
+      margin-bottom: var(--space-xl);
+    }
+
+    .features-preview {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-lg);
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .feature-preview-card {
+      background: var(--cream-warm);
+      padding: var(--space-lg);
+      text-align: center;
+    }
+
+    .feature-preview-card .icon {
+      font-size: 2rem;
+      margin-bottom: var(--space-md);
+      color: var(--hydrangea-deep);
+    }
+
+    .feature-preview-card h4 {
+      margin-bottom: var(--space-sm);
+      font-size: 1.1rem;
+    }
+
+    .feature-preview-card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 968px) {
+      .waitlist-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-xl);
+      }
+
+      .waitlist-form .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .features-preview {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="container">
+      <a href="index.html" class="logo">Wanderlust<span>Fin</span></a>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="features.html">Features</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="blog.html">Resources</a></li>
+        <li><a href="quiz.html" class="nav-cta">Take the Quiz</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="waitlist-page">
+    <!-- Hero with Form -->
+    <section class="waitlist-hero">
+      <div class="container">
+        <div class="waitlist-grid">
+          <div class="waitlist-content">
+            <p class="eyebrow">Early Access</p>
+            <h1>Be the first to experience <em>WanderlustFin</em></h1>
+            <p class="lead">Join our waitlist for founding member pricing and early access to the wealth platform built for your next level.</p>
+            
+            <ul class="benefits-list">
+              <li>Lock in founding member pricing forever</li>
+              <li>First access when we launch</li>
+              <li>Exclusive onboarding support</li>
+              <li>Shape the product with your feedback</li>
+            </ul>
+          </div>
+
+          <div class="waitlist-form-container">
+            <!-- Form - Replace ACTION URL with your email provider -->
+            <form class="waitlist-form" id="waitlist-form" action="YOUR_EMAIL_PROVIDER_URL_HERE" method="POST">
+              <h2>Join the Waitlist</h2>
+              <p class="form-subtitle">No spam. Just updates on our launch.</p>
+              
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="first-name">First Name</label>
+                  <input type="text" id="first-name" name="first_name" class="form-input" placeholder="Jane" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="last-name">Last Name</label>
+                  <input type="text" id="last-name" name="last_name" class="form-input" placeholder="Smith">
+                </div>
+              </div>
+              
+              <div class="form-group">
+                <label class="form-label" for="email">Email Address</label>
+                <input type="email" id="email" name="email" class="form-input" placeholder="jane@yourbusiness.com" required>
+              </div>
+              
+              <div class="form-group">
+                <label class="form-label" for="business-type">What best describes you?</label>
+                <select id="business-type" name="business_type" class="form-input">
+                  <option value="">Select one...</option>
+                  <option value="service-provider">Service Provider</option>
+                  <option value="coach-consultant">Coach / Consultant</option>
+                  <option value="creator">Creator / Influencer</option>
+                  <option value="ecommerce">E-commerce Owner</option>
+                  <option value="freelancer">Freelancer</option>
+                  <option value="other">Other Entrepreneur</option>
+                </select>
+              </div>
+
+              <button type="submit" class="btn btn-primary">Join the Waitlist</button>
+              
+              <p class="form-note">By joining, you agree to receive emails about WanderlustFin. Unsubscribe anytime.</p>
+            </form>
+
+            <!-- Success Message (hidden by default) -->
+            <div class="success-message" id="success-message">
+              <div class="icon">✨</div>
+              <h2>You're on the list!</h2>
+              <p>We'll be in touch soon with updates and your exclusive founding member access.</p>
+              <a href="quiz.html" class="btn btn-secondary">Take the Wealth Archetype Quiz</a>
+            </div>
+
+            <div class="social-proof">
+              <div class="proof-avatars">
+                <span>J</span>
+                <span>M</span>
+                <span>S</span>
+                <span>K</span>
+                <span>+</span>
+              </div>
+              <p class="proof-text"><strong>500+</strong> entrepreneurs already on the waitlist</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- What's Coming -->
+    <section class="coming-soon">
+      <div class="container">
+        <h2>What you'll get access to</h2>
+        <div class="features-preview">
+          <div class="feature-preview-card">
+            <div class="icon">◎</div>
+            <h4>360° Account Sync</h4>
+            <p>Connect all your accounts via Plaid — checking, savings, investments, HYSA, and more.</p>
+          </div>
+          <div class="feature-preview-card">
+            <div class="icon">✦</div>
+            <h4>AI Wealth Advisor</h4>
+            <p>Personalized insights based on your patterns, goals, and unique wealth identity.</p>
+          </div>
+          <div class="feature-preview-card">
+            <div class="icon">◇</div>
+            <h4>Business Goal Tracker</h4>
+            <p>Track revenue goals, program launches, and business milestones alongside personal finances.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">Wanderlust<span>Fin</span></a>
+          <p>Your Wealth Identity Operating System. Clarity, not anxiety. Expansion, not restriction.</p>
+        </div>
+        <div class="footer-links">
+          <h5>Product</h5>
+          <ul>
+            <li><a href="features.html">Features</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="quiz.html">Take the Quiz</a></li>
+            <li><a href="waitlist.html">Join Waitlist</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h5>Company</h5>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="blog.html">Resources</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h5>Legal</h5>
+          <ul>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 WanderlustFin LLC. All rights reserved.</p>
+        <p><a href="mailto:hello@wanderlustfin.com">hello@wanderlustfin.com</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile nav toggle
+    document.querySelector('.nav-toggle').addEventListener('click', function() {
+      document.querySelector('.nav-links').classList.toggle('active');
+    });
+
+    // Form submission handling (for demo - replace with actual form handler)
+    // document.getElementById('waitlist-form').addEventListener('submit', function(e) {
+    //   e.preventDefault();
+    //   document.getElementById('waitlist-form').style.display = 'none';
+    //   document.getElementById('success-message').classList.add('show');
+    // });
+  </script>
+
+</body>
+</html>
