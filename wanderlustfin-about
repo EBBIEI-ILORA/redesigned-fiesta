@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — WanderlustFin</title>
+  <meta name="description" content="WanderlustFin was created for high-earners in transition who need clarity, identity-based direction, and a system that meets them at the level they're rising into.">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="About — WanderlustFin">
+  <meta property="og:description" content="Wealth technology for a new era — intuitive, elegant, grounded, and designed for people stepping into their next level.">
+  <meta property="og:type" content="website">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/styles.css">
+  
+  <style>
+    /* About Page Specific Styles */
+    .about-hero {
+      background: linear-gradient(180deg, var(--cream-warm) 0%, var(--cream) 100%);
+      padding: calc(var(--space-3xl) + 60px) 0 var(--space-2xl);
+      text-align: center;
+    }
+
+    .about-hero h1 {
+      margin-bottom: var(--space-md);
+    }
+
+    .about-hero .lead {
+      font-size: 1.3rem;
+      max-width: 700px;
+      margin: 0 auto;
+      color: var(--text-secondary);
+    }
+
+    .origin-section {
+      padding: var(--space-2xl) 0;
+    }
+
+    .origin-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .origin-content h2 {
+      margin-bottom: var(--space-md);
+      text-align: center;
+    }
+
+    .origin-content p {
+      font-size: 1.1rem;
+      margin-bottom: var(--space-md);
+      line-height: 1.8;
+    }
+
+    .origin-content p:last-of-type {
+      margin-bottom: 0;
+    }
+
+    .highlight-box {
+      background: var(--cream-warm);
+      padding: var(--space-xl);
+      margin: var(--space-xl) 0;
+      border-left: 4px solid var(--hydrangea-deep);
+    }
+
+    .highlight-box p {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-style: italic;
+      color: var(--text-primary);
+      margin: 0;
+    }
+
+    .who-we-serve {
+      background: var(--sage);
+      color: var(--cream-warm);
+      padding: var(--space-2xl) 0;
+    }
+
+    .who-we-serve h2 {
+      color: var(--cream-warm);
+      text-align: center;
+      margin-bottom: var(--space-lg);
+    }
+
+    .who-we-serve .lead {
+      text-align: center;
+      font-size: 1.15rem;
+      max-width: 700px;
+      margin: 0 auto var(--space-xl);
+      color: rgba(255,255,255,0.9);
+    }
+
+    .serve-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-md);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .serve-item {
+      background: rgba(255,255,255,0.1);
+      padding: var(--space-md);
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-sm);
+    }
+
+    .serve-item .icon {
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .serve-item p {
+      color: rgba(255,255,255,0.95);
+      font-size: 0.95rem;
+      margin: 0;
+    }
+
+    .serve-footer {
+      text-align: center;
+      margin-top: var(--space-xl);
+      padding-top: var(--space-lg);
+      border-top: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .serve-footer p {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-style: italic;
+      color: rgba(255,255,255,0.9);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .difference-section {
+      padding: var(--space-2xl) 0;
+      background: var(--cream-warm);
+    }
+
+    .difference-section h2 {
+      text-align: center;
+      margin-bottom: var(--space-sm);
+    }
+
+    .difference-section .lead {
+      text-align: center;
+      font-size: 1.15rem;
+      max-width: 500px;
+      margin: 0 auto var(--space-xl);
+    }
+
+    .difference-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-lg);
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .difference-item {
+      text-align: center;
+      padding: var(--space-lg);
+      background: var(--cream);
+    }
+
+    .difference-item .icon {
+      font-size: 2rem;
+      margin-bottom: var(--space-md);
+      color: var(--hydrangea-deep);
+    }
+
+    .difference-item h4 {
+      margin-bottom: var(--space-sm);
+      font-size: 1.1rem;
+    }
+
+    .difference-item p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .aha-section {
+      padding: var(--space-2xl) 0;
+    }
+
+    .aha-content {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .aha-content .eyebrow {
+      margin-bottom: var(--space-sm);
+    }
+
+    .aha-content h2 {
+      margin-bottom: var(--space-lg);
+    }
+
+    .aha-quote {
+      background: var(--iron);
+      color: var(--cream-warm);
+      padding: var(--space-xl);
+      margin: var(--space-lg) 0;
+    }
+
+    .aha-quote p {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-style: italic;
+      color: var(--cream-warm);
+      margin: 0;
+    }
+
+    .integration-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: var(--space-sm);
+      margin: var(--space-lg) 0;
+    }
+
+    .integration-list span {
+      padding: 0.75rem 1.25rem;
+      background: var(--cream-warm);
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      border: 1px solid var(--stone-light);
+    }
+
+    .closing-statement {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-style: italic;
+      color: var(--text-primary);
+      margin-top: var(--space-lg);
+    }
+
+    .about-cta {
+      background: linear-gradient(135deg, var(--hydrangea-deep) 0%, var(--sage) 100%);
+      color: var(--cream-warm);
+      padding: var(--space-2xl) 0;
+      text-align: center;
+    }
+
+    .about-cta h2 {
+      color: var(--cream-warm);
+      margin-bottom: var(--space-md);
+    }
+
+    .about-cta p {
+      color: rgba(255,255,255,0.9);
+      font-size: 1.15rem;
+      max-width: 500px;
+      margin: 0 auto var(--space-lg);
+    }
+
+    .about-cta .btn-primary {
+      background: var(--cream-warm);
+      color: var(--iron);
+    }
+
+    .about-cta .btn-primary:hover {
+      background: white;
+    }
+
+    @media (max-width: 768px) {
+      .serve-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .difference-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-hero .lead {
+        font-size: 1.1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="container">
+      <a href="index.html" class="logo">Wanderlust<span>Fin</span></a>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="features.html">Features</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="blog.html">Resources</a></li>
+        <li><a href="quiz.html" class="nav-cta">Take the Quiz</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="about-hero">
+    <div class="container">
+      <p class="eyebrow">Our Story</p>
+      <h1>Wealth technology for a <em>new era</em></h1>
+      <p class="lead">Intuitive, elegant, grounded, and designed for people stepping into their next level.</p>
+    </div>
+  </section>
+
+  <!-- Origin Story -->
+  <section class="origin-section">
+    <div class="container">
+      <div class="origin-content">
+        <h2>Our Origin Story</h2>
+        <p>WanderlustFin was created in response to a growing truth: most modern earners don't need more financial lectures — they need clarity, identity-based direction, and a system that meets them at the level they're rising into.</p>
+        
+        <p>For years, ambitious creators, service providers, and entrepreneurs have been forced into financial tools built for survival, not expansion. Tools that track numbers but ignore behavior. Tools that automate transactions but not transformation.</p>
+        
+        <p>WanderlustFin was born to solve that gap.</p>
+        
+        <div class="highlight-box">
+          <p>"We envisioned a wealth platform that didn't just display data — it decoded identity, supported decision-making, and guided users into the version of themselves who already stewards wealth with confidence."</p>
+        </div>
+        
+        <p>A platform where psychology meets technology. Where clarity meets elegance. Where wealth becomes intuitive, not overwhelming.</p>
+        
+        <p>That vision became WanderlustFin.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Who We Serve -->
+  <section class="who-we-serve">
+    <div class="container">
+      <p class="eyebrow" style="color: var(--sage-light);">✦ Who We Serve</p>
+      <h2>Built for the high-earner in transition</h2>
+      <p class="lead">The entrepreneur, the creator, the independent professional who is ready for more.</p>
+      
+      <div class="serve-grid">
+        <div class="serve-item">
+          <span class="icon">↗</span>
+          <p>Increasing their income rapidly</p>
+        </div>
+        <div class="serve-item">
+          <span class="icon">◎</span>
+          <p>Ready to become a sophisticated wealth steward</p>
+        </div>
+        <div class="serve-item">
+          <span class="icon">✦</span>
+          <p>Craving clarity, structure, and identity-driven accountability</p>
+        </div>
+        <div class="serve-item">
+          <span class="icon">◇</span>
+          <p>Wanting a financial system that elevates them, not lectures them</p>
+        </div>
+      </div>
+      
+      <div class="serve-footer">
+        <p>We serve individuals who don't need someone to "fix" their finances — they need a tool that reflects their future, organizes their expansion, and helps them navigate wealth with confidence and intention.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- What Makes Us Different -->
+  <section class="difference-section">
+    <div class="container">
+      <p class="eyebrow">✦ What Makes WanderlustFin Different</p>
+      <h2>Traditional finance apps track spending.<br><em>We help you become the person who builds wealth.</em></h2>
+      <p class="lead">Instead of telling you what you "should" do, our system invites you into aligned, strategic next steps.</p>
+      
+      <div class="difference-grid">
+        <div class="difference-item">
+          <div class="icon">◎</div>
+          <h4>Identity-Based Psychology</h4>
+          <p>Understand your wealth archetype and build habits that match who you're becoming.</p>
+        </div>
+        <div class="difference-item">
+          <div class="icon">✦</div>
+          <h4>Custom AI Insights</h4>
+          <p>Personalized guidance based on your patterns, goals, and decision-making style.</p>
+        </div>
+        <div class="difference-item">
+          <div class="icon">◇</div>
+          <h4>Behavioral Nudges</h4>
+          <p>Gentle prompts that keep you aligned without shame or pressure.</p>
+        </div>
+        <div class="difference-item">
+          <div class="icon">↗</div>
+          <h4>Reserve-Building Frameworks</h4>
+          <p>Structured systems for building wealth, not just tracking it.</p>
+        </div>
+        <div class="difference-item">
+          <div class="icon">◈</div>
+          <h4>Visual Progress Mapping</h4>
+          <p>See your growth trajectory and celebrate milestones along the way.</p>
+        </div>
+        <div class="difference-item">
+          <div class="icon">$</div>
+          <h4>Decision Support</h4>
+          <p>Guidance based on your Wealth Identity, not generic rules.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Aha Moment -->
+  <section class="aha-section">
+    <div class="container">
+      <div class="aha-content">
+        <p class="eyebrow">✦ Our Origin Moment</p>
+        <h2>The Real Aha</h2>
+        
+        <p>WanderlustFin began as a simple internal wealth tracker built by a founder who needed a smarter, cleaner way to see her numbers, goals, habits, and identity in one place.</p>
+        
+        <p>What began as a private tool evolved into a revelation:</p>
+        
+        <div class="aha-quote">
+          <p>"People don't need more spreadsheets. They need a mirror of their future wealth identity. They need clarity, structure, and psychology — all in one place."</p>
+        </div>
+        
+        <p>WanderlustFin was born when we realized the missing link in the financial world wasn't more information… it was integration.</p>
+        
+        <p style="margin-bottom: var(--space-sm);">The integration of:</p>
+        
+        <div class="integration-list">
+          <span>Numbers</span>
+          <span>Behavior</span>
+          <span>Identity</span>
+          <span>Vision</span>
+          <span>Automated Clarity</span>
+          <span>Strategic Support</span>
+        </div>
+        
+        <p class="closing-statement">WanderlustFin exists because high-achieving individuals deserve a financial system that rises to meet their potential.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="about-cta">
+    <div class="container">
+      <h2>Ready to discover your Wealth Identity?</h2>
+      <p>Take our free 2-minute quiz and unlock personalized insights about your relationship with wealth.</p>
+      <a href="quiz.html" class="btn btn-primary btn-large">Take the Free Quiz</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">Wanderlust<span>Fin</span></a>
+          <p>Your Wealth Identity Operating System. Clarity, not anxiety. Expansion, not restriction.</p>
+        </div>
+        <div class="footer-links">
+          <h5>Product</h5>
+          <ul>
+            <li><a href="features.html">Features</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="quiz.html">Take the Quiz</a></li>
+            <li><a href="waitlist.html">Join Waitlist</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h5>Company</h5>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="blog.html">Resources</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h5>Legal</h5>
+          <ul>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 WanderlustFin LLC. All rights reserved.</p>
+        <p><a href="mailto:hello@wanderlustfin.com">hello@wanderlustfin.com</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile nav toggle
+    document.querySelector('.nav-toggle').addEventListener('click', function() {
+      document.querySelector('.nav-links').classList.toggle('active');
+    });
+  </script>
+
+</body>
+</html>
