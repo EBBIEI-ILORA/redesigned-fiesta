@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Discover Your Wealth Archetype — WanderlustFin</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --cream: #F7F5F0;
+      --cream-warm: #FAF8F3;
+      --sage: #6B7B5E;
+      --sage-light: #8A9A7A;
+      --sage-muted: #A8B89C;
+      --slate: #3D4A5C;
+      --slate-light: #5A6878;
+      --dusty-blue: #7B8FA3;
+      --dusty-blue-light: #B8C5D1;
+      --gold: #C4A962;
+      --gold-soft: #D4C590;
+      --charcoal: #2C2C2C;
+      --warm-white: #FEFDFB;
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body: 'Jost', sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      font-family: var(--font-body);
+      font-weight: 300;
+      color: var(--charcoal);
+      background: var(--cream);
+      min-height: 100vh;
+      line-height: 1.7;
+    }
+
+    .quiz-container {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 60px 24px;
+    }
+
+    .quiz-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .quiz-logo {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      color: var(--sage);
+      margin-bottom: 32px;
+      letter-spacing: 0.05em;
+    }
+
+    .quiz-header h1 {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      font-weight: 400;
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+
+    .quiz-header h1 em {
+      font-style: italic;
+      color: var(--sage);
+    }
+
+    .quiz-header p {
+      color: var(--slate-light);
+      font-size: 1.05rem;
+    }
+
+    /* Progress Bar */
+    .progress-container {
+      margin-bottom: 48px;
+    }
+
+    .progress-bar {
+      height: 4px;
+      background: var(--sage-muted);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: var(--sage);
+      width: 0%;
+      transition: width 0.4s ease;
+    }
+
+    .progress-text {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 12px;
+      font-size: 0.8rem;
+      color: var(--slate-light);
+      letter-spacing: 0.05em;
+    }
+
+    /* Question Container */
+    .question-container {
+      background: var(--warm-white);
+      padding: 48px;
+      margin-bottom: 32px;
+    }
+
+    .question-number {
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: 16px;
+    }
+
+    .question-text {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 400;
+      margin-bottom: 32px;
+      line-height: 1.4;
+    }
+
+    .options-container {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .option {
+      padding: 20px 24px;
+      background: var(--cream);
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .option:hover {
+      border-color: var(--sage-muted);
+    }
+
+    .option.selected {
+      border-color: var(--sage);
+      background: rgba(107, 123, 94, 0.08);
+    }
+
+    .option-letter {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--warm-white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 1rem;
+      flex-shrink: 0;
+      border: 1px solid var(--sage-muted);
+    }
+
+    .option.selected .option-letter {
+      background: var(--sage);
+      color: var(--warm-white);
+      border-color: var(--sage);
+    }
+
+    .option-text {
+      font-size: 1rem;
+      color: var(--charcoal);
+    }
+
+    /* Navigation */
+    .quiz-nav {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .btn {
+      padding: 16px 32px;
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--slate-light);
+      border: 1px solid var(--sage-muted);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--sage);
+      color: var(--sage);
+    }
+
+    .btn-primary {
+      background: var(--sage);
+      color: var(--warm-white);
+    }
+
+    .btn-primary:hover {
+      background: var(--slate);
+    }
+
+    .btn-primary:disabled {
+      background: var(--sage-muted);
+      cursor: not-allowed;
+    }
+
+    /* Results Page */
+    .results-container {
+      text-align: center;
+    }
+
+    .archetype-reveal {
+      background: var(--warm-white);
+      padding: 64px 48px;
+      margin-bottom: 32px;
+    }
+
+    .archetype-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--sage) 0%, var(--dusty-blue) 100%);
+      margin: 0 auto 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+    }
+
+    .archetype-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: 8px;
+    }
+
+    .archetype-name {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      font-weight: 400;
+      margin-bottom: 16px;
+    }
+
+    .archetype-tagline {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 1.3rem;
+      color: var(--slate-light);
+      margin-bottom: 32px;
+    }
+
+    .archetype-description {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--slate);
+      max-width: 550px;
+      margin: 0 auto 32px;
+    }
+
+    .traits-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      text-align: left;
+      margin-top: 32px;
+      padding-top: 32px;
+      border-top: 1px solid var(--sage-muted);
+    }
+
+    .trait-block h4 {
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: 12px;
+    }
+
+    .trait-block ul {
+      list-style: none;
+    }
+
+    .trait-block li {
+      font-size: 0.95rem;
+      color: var(--slate);
+      padding: 6px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .trait-block li::before {
+      content: '✦';
+      color: var(--sage-muted);
+      font-size: 0.7rem;
+    }
+
+    .cta-section {
+      background: linear-gradient(135deg, var(--slate) 0%, var(--sage) 100%);
+      color: var(--warm-white);
+      padding: 48px;
+      text-align: center;
+    }
+
+    .cta-section h3 {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 400;
+      margin-bottom: 16px;
+    }
+
+    .cta-section p {
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 24px;
+      font-size: 1rem;
+    }
+
+    .cta-section .btn-primary {
+      background: var(--warm-white);
+      color: var(--sage);
+    }
+
+    .cta-section .btn-primary:hover {
+      background: var(--gold-soft);
+      color: var(--slate);
+    }
+
+    /* Hidden states */
+    .hidden { display: none; }
+
+    @media (max-width: 600px) {
+      .question-container { padding: 32px 24px; }
+      .archetype-reveal { padding: 48px 24px; }
+      .traits-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="quiz-container">
+  
+  <!-- Header -->
+  <div class="quiz-header">
+    <p class="quiz-logo">WanderlustFin</p>
+    <h1>Discover Your <em>Wealth Archetype</em></h1>
+    <p>Answer 8 questions to reveal your unique relationship with money—and unlock personalized insights for your journey.</p>
+  </div>
+
+  <!-- Progress -->
+  <div class="progress-container" id="progress-container">
+    <div class="progress-bar">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+    <div class="progress-text">
+      <span id="progress-label">Question 1 of 8</span>
+      <span id="progress-percent">0%</span>
+    </div>
+  </div>
+
+  <!-- Questions -->
+  <div id="quiz-content">
+    <!-- Questions will be dynamically inserted -->
+  </div>
+
+  <!-- Results (hidden initially) -->
+  <div id="results" class="results-container hidden">
+    <!-- Results will be dynamically inserted -->
+  </div>
+
+</div>
+
+<script>
+const questions = [
+  {
+    id: 1,
+    question: "When you think about checking your bank balance, what's your first instinct?",
+    options: [
+      { letter: "A", text: "I check it regularly—knowledge is power", archetype: "builder" },
+      { letter: "B", text: "I'd rather focus on the vision than the current numbers", archetype: "visionary" },
+      { letter: "C", text: "I tend to avoid it if I'm worried about what I'll see", archetype: "nurturer" },
+      { letter: "D", text: "I check it when I need to, but I trust my instincts about where I stand", archetype: "maverick" }
+    ]
+  },
+  {
+    id: 2,
+    question: "A surprise $5,000 lands in your account. Your first thought is:",
+    options: [
+      { letter: "A", text: "Put it toward my savings goal or debt payoff", archetype: "builder" },
+      { letter: "B", text: "Invest it in something that could grow—a course, my business, stocks", archetype: "visionary" },
+      { letter: "C", text: "Finally take care of that thing I've been putting off for someone I love", archetype: "nurturer" },
+      { letter: "D", text: "Book that trip or experience I've been wanting", archetype: "maverick" }
+    ]
+  },
+  {
+    id: 3,
+    question: "When making a big purchase, you typically:",
+    options: [
+      { letter: "A", text: "Research thoroughly, compare options, and wait for the right time", archetype: "builder" },
+      { letter: "B", text: "Decide quickly if it aligns with where I'm going—I trust my vision", archetype: "visionary" },
+      { letter: "C", text: "Consider how it affects everyone around me, not just myself", archetype: "nurturer" },
+      { letter: "D", text: "Go with my gut—if it feels right and I can swing it, I do it", archetype: "maverick" }
+    ]
+  },
+  {
+    id: 4,
+    question: "Your relationship with financial planning could best be described as:",
+    options: [
+      { letter: "A", text: "I have systems, spreadsheets, or apps—I like structure", archetype: "builder" },
+      { letter: "B", text: "I focus on big picture goals more than day-to-day tracking", archetype: "visionary" },
+      { letter: "C", text: "I plan around making sure everyone is taken care of first", archetype: "nurturer" },
+      { letter: "D", text: "Plans feel limiting—I prefer to stay flexible and adapt", archetype: "maverick" }
+    ]
+  },
+  {
+    id: 5,
+    question: "When your income increases, you're most likely to:",
+    options: [
+      { letter: "A", text: "Increase my savings rate and investment contributions proportionally", archetype: "builder" },
+      { letter: "B", text: "Reinvest in growth opportunities—my business, education, or new ventures", archetype: "visionary" },
+      { letter: "C", text: "Use it to help family, give more generously, or create comfort for loved ones", archetype: "nurturer" },
+      { letter: "D", text: "Upgrade my lifestyle—I work hard, I deserve to enjoy it", archetype: "maverick" }
+    ]
+  },
+  {
+    id: 6,
+    question: "The idea of having a year's worth of expenses saved feels:",
+    options: [
+      { letter: "A", text: "Essential—that's the foundation I'm building toward", archetype: "builder" },
+      { letter: "B", text: "Nice in theory, but I'd rather have my money working for me", archetype: "visionary" },
+      { letter: "C", text: "Important for security—I need to know my family is protected", archetype: "nurturer" },
+      { letter: "D", text: "A bit excessive—I trust I'll always figure it out", archetype: "maverick" }
+    ]
+  },
+  {
+    id: 7,
+    question: "When you experience a financial setback, your response is usually:",
+    options: [
+      { letter: "A", text: "Analyze what happened, adjust my plan, and rebuild methodically", archetype: "builder" },
+      { letter: "B", text: "See it as temporary—my next opportunity will more than make up for it", archetype: "visionary" },
+      { letter: "C", text: "Worry about how it affects the people counting on me", archetype: "nurturer" },
+      { letter: "D", text: "Shake it off—I've been through worse and always land on my feet", archetype: "maverick" }
+    ]
+  },
+  {
+    id: 8,
+    question: "Your definition of 'wealthy' is closest to:",
+    options: [
+      { letter: "A", text: "Financial security—having enough that I never have to worry", archetype: "builder" },
+      { letter: "B", text: "Freedom to pursue any opportunity without constraint", archetype: "visionary" },
+      { letter: "C", text: "Being able to generously support the people and causes I care about", archetype: "nurturer" },
+      { letter: "D", text: "Living life fully on my own terms, experiencing everything I want", archetype: "maverick" }
+    ]
+  }
+];
+
+const archetypes = {
+  builder: {
+    name: "The Builder",
+    icon: "◎",
+    tagline: "Wealth through structure, strategy, and steady accumulation.",
+    description: "You approach money with intention and discipline. You believe in the power of systems—tracking, planning, and building wealth brick by brick. Your superpower is consistency; your growth edge is learning to trust abundance beyond what you can control.",
+    strengths: [
+      "Natural financial discipline",
+      "Long-term thinking",
+      "Strong foundation-building",
+      "Data-driven decisions"
+    ],
+    growth: [
+      "Releasing over-control",
+      "Trusting intuitive spending",
+      "Celebrating progress, not just goals",
+      "Allowing flexibility in your plans"
+    ],
+    aiInsight: "Your AI advisor will help you track milestones, optimize your savings rate, and identify when your discipline might be creating unnecessary restriction."
+  },
+  visionary: {
+    name: "The Visionary",
+    icon: "✦",
+    tagline: "Wealth through opportunity, expansion, and bold bets.",
+    description: "You see money as fuel for possibility. While others save, you invest—in yourself, your business, your future. Your superpower is seeing potential others miss; your growth edge is building stability alongside your expansion.",
+    strengths: [
+      "Opportunity recognition",
+      "Investment mindset",
+      "Big-picture thinking",
+      "Growth-oriented decisions"
+    ],
+    growth: [
+      "Building consistent reserves",
+      "Balancing risk with stability",
+      "Patience with slow growth",
+      "Completing before starting new"
+    ],
+    aiInsight: "Your AI advisor will help you balance your growth investments with reserves, and identify which opportunities align with your current capacity."
+  },
+  nurturer: {
+    name: "The Nurturer",
+    icon: "◇",
+    tagline: "Wealth through care, protection, and generous provision.",
+    description: "You define wealth by what it allows you to give. Your financial decisions consider everyone in your orbit—family, team, community. Your superpower is generous stewardship; your growth edge is prioritizing your own financial needs without guilt.",
+    strengths: [
+      "Generous spirit",
+      "Protective financial instincts",
+      "Community-minded decisions",
+      "Purpose-driven money management"
+    ],
+    growth: [
+      "Prioritizing yourself first",
+      "Setting financial boundaries",
+      "Receiving without guilt",
+      "Building personal reserves"
+    ],
+    aiInsight: "Your AI advisor will help you build boundaries around giving, ensure you're saving for yourself first, and release guilt about personal financial growth."
+  },
+  maverick: {
+    name: "The Maverick",
+    icon: "↗",
+    tagline: "Wealth through freedom, experience, and trusting the flow.",
+    description: "You believe money should serve your life, not the other way around. You're resourceful, adaptable, and trust your ability to figure things out. Your superpower is financial fearlessness; your growth edge is building structure that supports your freedom.",
+    strengths: [
+      "Resourcefulness",
+      "Adaptability",
+      "Present-moment enjoyment",
+      "Freedom-oriented mindset"
+    ],
+    growth: [
+      "Building safety nets",
+      "Future-focused planning",
+      "Consistent tracking habits",
+      "Long-term commitment"
+    ],
+    aiInsight: "Your AI advisor will help you build structure that feels expansive rather than restrictive, and create systems that support your need for freedom."
+  }
+};
+
+let currentQuestion = 0;
+let answers = {};
+
+function renderQuestion(index) {
+  const q = questions[index];
+  const progress = ((index) / questions.length) * 100;
+  
+  document.getElementById('progress-fill').style.width = `${progress}%`;
+  document.getElementById('progress-label').textContent = `Question ${index + 1} of ${questions.length}`;
+  document.getElementById('progress-percent').textContent = `${Math.round(progress)}%`;
+  
+  const selectedAnswer = answers[q.id];
+  
+  let optionsHtml = q.options.map(opt => `
+    <div class="option ${selectedAnswer === opt.archetype ? 'selected' : ''}" 
+         onclick="selectOption(${q.id}, '${opt.archetype}', this)">
+      <span class="option-letter">${opt.letter}</span>
+      <span class="option-text">${opt.text}</span>
+    </div>
+  `).join('');
+  
+  document.getElementById('quiz-content').innerHTML = `
+    <div class="question-container">
+      <p class="question-number">Question ${index + 1}</p>
+      <p class="question-text">${q.question}</p>
+      <div class="options-container">
+        ${optionsHtml}
+      </div>
+    </div>
+    <div class="quiz-nav">
+      <button class="btn btn-secondary" onclick="prevQuestion()" ${index === 0 ? 'style="visibility:hidden"' : ''}>
+        ← Previous
+      </button>
+      <button class="btn btn-primary" onclick="nextQuestion()" id="next-btn" ${!selectedAnswer ? 'disabled' : ''}>
+        ${index === questions.length - 1 ? 'See My Results' : 'Continue →'}
+      </button>
+    </div>
+  `;
+}
+
+function selectOption(questionId, archetype, element) {
+  answers[questionId] = archetype;
+  
+  // Update UI
+  document.querySelectorAll('.option').forEach(opt => opt.classList.remove('selected'));
+  element.classList.add('selected');
+  document.getElementById('next-btn').disabled = false;
+}
+
+function nextQuestion() {
+  if (currentQuestion < questions.length - 1) {
+    currentQuestion++;
+    renderQuestion(currentQuestion);
+  } else {
+    showResults();
+  }
+}
+
+function prevQuestion() {
+  if (currentQuestion > 0) {
+    currentQuestion--;
+    renderQuestion(currentQuestion);
+  }
+}
+
+function calculateArchetype() {
+  const counts = { builder: 0, visionary: 0, nurturer: 0, maverick: 0 };
+  
+  Object.values(answers).forEach(archetype => {
+    counts[archetype]++;
+  });
+  
+  let maxCount = 0;
+  let dominantArchetype = 'builder';
+  
+  for (const [archetype, count] of Object.entries(counts)) {
+    if (count > maxCount) {
+      maxCount = count;
+      dominantArchetype = archetype;
+    }
+  }
+  
+  return { dominant: dominantArchetype, counts };
+}
+
+function showResults() {
+  const { dominant, counts } = calculateArchetype();
+  const archetype = archetypes[dominant];
+  
+  document.getElementById('progress-container').classList.add('hidden');
+  document.getElementById('quiz-content').classList.add('hidden');
+  document.getElementById('results').classList.remove('hidden');
+  
+  document.getElementById('results').innerHTML = `
+    <div class="archetype-reveal">
+      <div class="archetype-icon">${archetype.icon}</div>
+      <p class="archetype-label">Your Wealth Archetype</p>
+      <h2 class="archetype-name">${archetype.name}</h2>
+      <p class="archetype-tagline">${archetype.tagline}</p>
+      <p class="archetype-description">${archetype.description}</p>
+      
+      <div class="traits-grid">
+        <div class="trait-block">
+          <h4>Your Superpowers</h4>
+          <ul>
+            ${archetype.strengths.map(s => `<li>${s}</li>`).join('')}
+          </ul>
+        </div>
+        <div class="trait-block">
+          <h4>Your Growth Edges</h4>
+          <ul>
+            ${archetype.growth.map(g => `<li>${g}</li>`).join('')}
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <div class="cta-section">
+      <h3>Your personalized wealth journey awaits</h3>
+      <p>${archetype.aiInsight}</p>
+      <a href="#" class="btn btn-primary">Start Your Free Trial</a>
+    </div>
+  `;
+}
+
+// Initialize
+renderQuestion(0);
+</script>
+
+</body>
+</html>
