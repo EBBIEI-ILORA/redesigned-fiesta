@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resources — WanderlustFin</title>
+  <meta name="description" content="Insights, guides, and resources to help you build wealth with clarity and intention.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/styles.css">
+  
+  <style>
+    .blog-hero {
+      background: var(--cream-warm);
+      padding: calc(var(--space-3xl) + 60px) 0 var(--space-xl);
+      text-align: center;
+    }
+
+    .blog-hero h1 {
+      margin-bottom: var(--space-sm);
+    }
+
+    .blog-section {
+      padding: var(--space-2xl) 0;
+    }
+
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-lg);
+    }
+
+    .blog-card {
+      background: var(--cream-warm);
+      transition: all 0.3s ease;
+    }
+
+    .blog-card:hover {
+      box-shadow: 0 10px 40px rgba(61, 66, 72, 0.08);
+      transform: translateY(-4px);
+    }
+
+    .blog-card-image {
+      height: 200px;
+      background: linear-gradient(135deg, var(--hydrangea-light) 0%, var(--sage-light) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+    }
+
+    .blog-card-content {
+      padding: var(--space-lg);
+    }
+
+    .blog-card-category {
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--hydrangea-deep);
+      margin-bottom: var(--space-sm);
+    }
+
+    .blog-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: var(--space-sm);
+      line-height: 1.3;
+    }
+
+    .blog-card h3 a {
+      color: var(--text-primary);
+      text-decoration: none;
+    }
+
+    .blog-card h3 a:hover {
+      color: var(--hydrangea-deep);
+    }
+
+    .blog-card p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: var(--space-md);
+    }
+
+    .blog-card-meta {
+      font-size: 0.8rem;
+      color: var(--taupe);
+    }
+
+    /* Featured Post */
+    .featured-post {
+      background: var(--cream);
+      padding: var(--space-2xl) 0;
+    }
+
+    .featured-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-xl);
+      align-items: center;
+    }
+
+    .featured-image {
+      height: 400px;
+      background: linear-gradient(135deg, var(--sage) 0%, var(--hydrangea-deep) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 5rem;
+      color: white;
+      opacity: 0.8;
+    }
+
+    .featured-content .eyebrow {
+      margin-bottom: var(--space-sm);
+    }
+
+    .featured-content h2 {
+      margin-bottom: var(--space-md);
+    }
+
+    .featured-content p {
+      margin-bottom: var(--space-lg);
+    }
+
+    /* Coming Soon State */
+    .coming-soon-section {
+      padding: var(--space-2xl) 0;
+      text-align: center;
+      background: var(--cream-warm);
+    }
+
+    .coming-soon-section h2 {
+      margin-bottom: var(--space-md);
+    }
+
+    .coming-soon-section p {
+      max-width: 500px;
+      margin: 0 auto var(--space-lg);
+    }
+
+    /* Newsletter */
+    .newsletter-section {
+      padding: var(--space-2xl) 0;
+      background: var(--sage);
+      color: var(--cream-warm);
+      text-align: center;
+    }
+
+    .newsletter-section h2 {
+      color: var(--cream-warm);
+      margin-bottom: var(--space-sm);
+    }
+
+    .newsletter-section p {
+      color: rgba(255,255,255,0.9);
+      margin-bottom: var(--space-lg);
+    }
+
+    .newsletter-form {
+      display: flex;
+      gap: var(--space-sm);
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .newsletter-form input {
+      flex: 1;
+      padding: 1rem;
+      border: none;
+      font-family: var(--font-body);
+      font-size: 1rem;
+    }
+
+    .newsletter-form button {
+      padding: 1rem 2rem;
+      background: var(--iron);
+      color: var(--cream-warm);
+      border: none;
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .newsletter-form button:hover {
+      background: var(--charcoal);
+    }
+
+    @media (max-width: 968px) {
+      .blog-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .featured-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .newsletter-form {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="container">
+      <a href="index.html" class="logo">Wanderlust<span>Fin</span></a>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="features.html">Features</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="blog.html">Resources</a></li>
+        <li><a href="quiz.html" class="nav-cta">Take the Quiz</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="blog-hero">
+    <div class="container">
+      <p class="eyebrow">Resources</p>
+      <h1>Insights for your <em>wealth journey</em></h1>
+      <p>Guides, frameworks, and ideas to help you build wealth with clarity and intention.</p>
+    </div>
+  </section>
+
+  <!-- Featured Post -->
+  <section class="featured-post">
+    <div class="container">
+      <div class="featured-grid">
+        <div class="featured-image">◈</div>
+        <div class="featured-content">
+          <p class="eyebrow">Featured</p>
+          <h2>The 4 Wealth Archetypes: Which One Are You?</h2>
+          <p>Your relationship with money has a pattern. Understanding your Wealth Archetype unlocks personalized insights, reveals your growth edges, and shows you the path to your next level of wealth embodiment.</p>
+          <a href="quiz.html" class="btn btn-primary">Take the Quiz</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog Posts -->
+  <section class="blog-section">
+    <div class="container">
+      <div class="blog-grid">
+        
+        <div class="blog-card">
+          <div class="blog-card-image">◎</div>
+          <div class="blog-card-content">
+            <p class="blog-card-category">Mindset</p>
+            <h3><a href="#">From Avoidance to Awareness: Healing Your Relationship with Money</a></h3>
+            <p>Why checking your accounts feels hard — and how to make it feel like self-care.</p>
+            <p class="blog-card-meta">5 min read</p>
+          </div>
+        </div>
+
+        <div class="blog-card">
+          <div class="blog-card-image">✦</div>
+          <div class="blog-card-content">
+            <p class="blog-card-category">Strategy</p>
+            <h3><a href="#">Building Reserves: The Framework for Financial Peace</a></h3>
+            <p>How to build a reserves system that matches your income patterns and risk tolerance.</p>
+            <p class="blog-card-meta">7 min read</p>
+          </div>
+        </div>
+
+        <div class="blog-card">
+          <div class="blog-card-image">◇</div>
+          <div class="blog-card-content">
+            <p class="blog-card-category">Entrepreneurs</p>
+            <h3><a href="#">Separating Business and Personal: A Guide for Solopreneurs</a></h3>
+            <p>Why the line matters and how to draw it without overcomplicating your life.</p>
+            <p class="blog-card-meta">6 min read</p>
+          </div>
+        </div>
+
+        <div class="blog-card">
+          <div class="blog-card-image">↗</div>
+          <div class="blog-card-content">
+            <p class="blog-card-category">Identity</p>
+            <h3><a href="#">The Builder's Path: Wealth Through Systems</a></h3>
+            <p>A deep dive into the Builder archetype and how to leverage your natural strengths.</p>
+            <p class="blog-card-meta">8 min read</p>
+          </div>
+        </div>
+
+        <div class="blog-card">
+          <div class="blog-card-image">$</div>
+          <div class="blog-card-content">
+            <p class="blog-card-category">Money Psychology</p>
+            <h3><a href="#">Why "More Money" Doesn't Fix Money Stress</a></h3>
+            <p>The surprising truth about income and financial anxiety — and what actually helps.</p>
+            <p class="blog-card-meta">5 min read</p>
+          </div>
+        </div>
+
+        <div class="blog-card">
+          <div class="blog-card-image">📊</div>
+          <div class="blog-card-content">
+            <p class="blog-card-category">Getting Started</p>
+            <h3><a href="#">Your First 30 Days with Financial Visibility</a></h3>
+            <p>What to expect when you finally see all your numbers in one place.</p>
+            <p class="blog-card-meta">4 min read</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="newsletter-section">
+    <div class="container">
+      <h2>Get insights in your inbox</h2>
+      <p>Weekly thoughts on wealth identity, money psychology, and building financial clarity.</p>
+      <form class="newsletter-form" action="YOUR_EMAIL_PROVIDER_URL" method="POST">
+        <input type="email" name="email" placeholder="Your email address" required>
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">Wanderlust<span>Fin</span></a>
+          <p>Your Wealth Identity Operating System. Clarity, not anxiety. Expansion, not restriction.</p>
+        </div>
+        <div class="footer-links">
+          <h5>Product</h5>
+          <ul>
+            <li><a href="features.html">Features</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="quiz.html">Take the Quiz</a></li>
+            <li><a href="waitlist.html">Join Waitlist</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h5>Company</h5>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="blog.html">Resources</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h5>Legal</h5>
+          <ul>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 WanderlustFin LLC. All rights reserved.</p>
+        <p><a href="mailto:hello@wanderlustfin.com">hello@wanderlustfin.com</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelector('.nav-toggle').addEventListener('click', function() {
+      document.querySelector('.nav-links').classList.toggle('active');
+    });
+  </script>
+
+</body>
+</html>
