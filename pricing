@@ -1,0 +1,672 @@
+import { useState } from "react";
+import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Switch } from "@/components/ui/switch";
+import { useAuth } from "@/contexts/AuthContext";
+import { supabase } from "@/integrations/supabase/client";
+import { toast } from "@/hooks/use-toast";
+import { Check, ArrowLeft } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+
+// Subscription tier configuration
+export const SUBSCRIPTION_TIERS: Record<string, {
+  name: string;
+  subtitle: string;
+  monthly_price_id: string;
+  yearly_price_id: string;
+  product_id: string;
+  yearly_product_id: string;
+  monthlyPrice: number;
+  yearlyPrice: number;
+  popular?: boolean;
+  features: string[];
+}> = {
+  awakening: {
+    name: "Awakening",
+    subtitle: "Begin your journey",
+    monthly_price_id: "price_1Sa9R3GYK3AqAdEQJPjkUoQd",
+    yearly_price_id: "price_1Sa9UuGYK3AqAdEQlEV45OTW",
+    product_id: "prod_TXDsw93nMt5WEG",
+    yearly_product_id: "prod_TXDww2GmyEsGyl",
+    monthlyPrice: 37,
+    yearlyPrice: 297,
+    features: [
+      "Connect up to 3 accounts via Plaid",
+      "Dashboard with income & expense tracking",
+      "Monthly financial summaries",
+      "Wealth Archetype quiz + reveal",
+      "1 savings goal tracker",
+      "CSV transaction upload",
+      "Mobile app access",
+    ],
+  },
+  expansion: {
+    name: "Expansion",
+    subtitle: "Grow with intention",
+    monthly_price_id: "price_1Sa9R5GYK3AqAdEQwA4gdUyt",
+    yearly_price_id: "price_1Sa9UwGYK3AqAdEQnWPqbVyj",
+    product_id: "prod_TXDsd1F4sESano",
+    yearly_product_id: "prod_TXDwybyHjdULOs",
+    monthlyPrice: 67,
+    yearlyPrice: 547,
+    popular: true,
+    features: [
+      "Everything in Awakening, plus:",
+      "Unlimited account connections",
+      "Multiple goals with milestone celebrations",
+      "AI Wealth Advisor — monthly insights",
+      "Spending analysis by category",
+      "Reserves builder with recommendations",
+      "Year-over-year comparisons",
+      "1 Business Goal Tracker",
+      "Priority support",
+    ],
+  },
+  embodiment: {
+    name: "Embodiment",
+    subtitle: "Command your legacy",
+    monthly_price_id: "price_1Sa9R8GYK3AqAdEQOddC4XVs",
+    yearly_price_id: "price_1Sa9UyGYK3AqAdEQykkp7x9R",
+    product_id: "prod_TXDs6rKINhhEHJ",
+    yearly_product_id: "prod_TXDw9TJrRD2Wse",
+    monthlyPrice: 127,
+    yearlyPrice: 997,
+    features: [
+      "Everything in Expansion, plus:",
+      "Portfolio & investment tracking",
+      "AI Advisor — weekly insights",
+      "Unlimited Business Goal Trackers",
+      "Allocation recommendations",
+      "Quarterly wealth check-ins",
+      "Stripe + booking integration",
+      "Early access to new features",
+      "Founding member badge",
+    ],
+  },
+};
+
+const Pricing = () => {
+  const { user, subscription } = useAuth();
+  const navigate = useNavigate();
+  const [loadingTier, setLoadingTier] = useState<string | null>(null);
+  const [isYearly, setIsYearly] = useState(false);
+
+  const handleSubscribe = async (tierKey: string) => {
+    if (!user) {
+      navigate("/auth");
+      return;
+    }
+
+    const tier = SUBSCRIPTION_TIERS[tierKey];
+    const priceId = isYearly ? tier.yearly_price_id : tier.monthly_price_id;
+    setLoadingTier(tierKey);
+
+    try {
+      const { data, error } = await supabase.functions.invoke("create-checkout", {
+        body: { priceId },
+      });
+
+      if (error) throw error;
+      if (data?.url) {
+        window.open(data.url, "_blank");
+      }
+    } catch (error: any) {
+      console.error("Checkout error:", error);
+      toast({
+        title: "Error",
+        description: error.message || "Failed to start checkout",
+        variant: "destructive",
+      });
+    } finally {
+      setLoadingTier(null);
+    }
+  };
+
+  const handleManageSubscription = async () => {
+    try {
+      const { data, error } = await supabase.functions.invoke("customer-portal");
+      if (error) throw error;
+      if (data?.url) {
+        window.open(data.url, "_blank");
+      }
+    } catch (error: any) {
+      console.error("Portal error:", error);
+      toast({
+        title: "Error",
+        description: error.message || "Failed to open subscription management",
+        variant: "destructive",
+      });
+    }
+  };
+
+  const getCurrentTierKey = () => {
+    if (!subscription?.product_id) return null;
+    return Object.entries(SUBSCRIPTION_TIERS).find(
+      ([_, tier]) => tier.product_id === subscription.product_id || tier.yearly_product_id === subscription.product_id
+    )?.[0];
+  };
+
+  const currentTierKey = getCurrentTierKey();
+
+  return (
+    <div className="pricing-page">
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&display=swap');
+        
+        .pricing-page {
+          --cream: #F5F2ED;
+          --cream-warm: #FAF8F5;
+          --sand: #EBE6DF;
+          --stone-light: #E2DDD5;
+          --stone: #C9C2B8;
+          --taupe: #9A9086;
+          --hydrangea-light: #B8C5D4;
+          --hydrangea: #8FA3B8;
+          --hydrangea-deep: #6B839C;
+          --sage-light: #A8B89A;
+          --sage: #6B7B5E;
+          --slate: #4A5058;
+          --iron: #3D4248;
+          --charcoal: #2C3035;
+          
+          min-height: 100vh;
+          background: linear-gradient(180deg, var(--cream-warm) 0%, var(--cream) 100%);
+          padding: 3rem 1.5rem 4rem;
+          font-family: 'Jost', sans-serif;
+        }
+
+        .pricing-container {
+          max-width: 1200px;
+          margin: 0 auto;
+        }
+
+        .back-button {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem;
+          padding: 0.75rem 1.25rem;
+          background: transparent;
+          border: 1px solid var(--stone);
+          color: var(--slate);
+          font-family: 'Jost', sans-serif;
+          font-size: 0.8rem;
+          letter-spacing: 0.05em;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          margin-bottom: 2rem;
+        }
+
+        .back-button:hover {
+          border-color: var(--hydrangea-deep);
+          color: var(--hydrangea-deep);
+        }
+
+        .pricing-header {
+          text-align: center;
+          margin-bottom: 3rem;
+        }
+
+        .pricing-header .eyebrow {
+          font-size: 0.7rem;
+          letter-spacing: 0.2em;
+          text-transform: uppercase;
+          color: var(--hydrangea-deep);
+          margin-bottom: 1rem;
+        }
+
+        .pricing-header h1 {
+          font-family: 'Cormorant Garamond', serif;
+          font-size: clamp(2.5rem, 5vw, 3.5rem);
+          font-weight: 300;
+          color: var(--iron);
+          margin: 0 0 1rem 0;
+          letter-spacing: -0.02em;
+        }
+
+        .pricing-header h1 em {
+          font-style: italic;
+          color: var(--hydrangea-deep);
+        }
+
+        .pricing-header p {
+          font-size: 1.1rem;
+          color: var(--slate);
+          max-width: 600px;
+          margin: 0 auto;
+          line-height: 1.7;
+          font-weight: 300;
+        }
+
+        .billing-toggle {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 1rem;
+          margin-bottom: 3rem;
+        }
+
+        .billing-toggle span {
+          font-size: 0.9rem;
+          color: var(--taupe);
+          transition: color 0.3s ease;
+        }
+
+        .billing-toggle span.active {
+          color: var(--iron);
+          font-weight: 500;
+        }
+
+        .savings-badge {
+          background: var(--sage);
+          color: var(--cream-warm);
+          padding: 0.35rem 0.75rem;
+          font-size: 0.7rem;
+          letter-spacing: 0.05em;
+          border-radius: 0;
+        }
+
+        .pricing-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 1.5rem;
+          margin-bottom: 4rem;
+        }
+
+        @media (max-width: 968px) {
+          .pricing-grid {
+            grid-template-columns: 1fr;
+            max-width: 420px;
+            margin-left: auto;
+            margin-right: auto;
+          }
+        }
+
+        .pricing-card {
+          background: var(--cream-warm);
+          padding: 2.5rem 2rem;
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          transition: all 0.4s ease;
+          border: 1px solid transparent;
+        }
+
+        .pricing-card:hover {
+          box-shadow: 0 20px 60px rgba(61, 66, 72, 0.1);
+          transform: translateY(-4px);
+        }
+
+        .pricing-card.featured {
+          background: var(--slate);
+          color: var(--cream-warm);
+          transform: scale(1.02);
+        }
+
+        .pricing-card.featured:hover {
+          transform: scale(1.02) translateY(-4px);
+        }
+
+        .pricing-card.current {
+          border: 2px solid var(--hydrangea-deep);
+        }
+
+        .card-badge {
+          position: absolute;
+          top: -12px;
+          left: 50%;
+          transform: translateX(-50%);
+          padding: 0.5rem 1.25rem;
+          font-size: 0.65rem;
+          letter-spacing: 0.15em;
+          text-transform: uppercase;
+          white-space: nowrap;
+        }
+
+        .card-badge.popular {
+          background: var(--hydrangea-deep);
+          color: var(--cream-warm);
+        }
+
+        .card-badge.current {
+          background: var(--sage);
+          color: var(--cream-warm);
+        }
+
+        .tier-name {
+          font-family: 'Cormorant Garamond', serif;
+          font-size: 1.75rem;
+          font-weight: 400;
+          margin: 0 0 0.25rem 0;
+          color: var(--iron);
+        }
+
+        .pricing-card.featured .tier-name {
+          color: var(--cream-warm);
+        }
+
+        .tier-subtitle {
+          font-size: 0.85rem;
+          color: var(--taupe);
+          font-style: italic;
+          margin-bottom: 1.5rem;
+        }
+
+        .pricing-card.featured .tier-subtitle {
+          color: var(--stone);
+        }
+
+        .price-container {
+          margin-bottom: 1.5rem;
+          padding-bottom: 1.5rem;
+          border-bottom: 1px solid var(--stone-light);
+        }
+
+        .pricing-card.featured .price-container {
+          border-bottom-color: rgba(255,255,255,0.15);
+        }
+
+        .price {
+          font-family: 'Cormorant Garamond', serif;
+          font-size: 3rem;
+          font-weight: 300;
+          color: var(--iron);
+          line-height: 1;
+        }
+
+        .pricing-card.featured .price {
+          color: var(--cream-warm);
+        }
+
+        .price-period {
+          font-size: 0.9rem;
+          color: var(--taupe);
+          margin-left: 0.25rem;
+        }
+
+        .pricing-card.featured .price-period {
+          color: var(--stone);
+        }
+
+        .price-note {
+          font-size: 0.8rem;
+          color: var(--sage);
+          margin-top: 0.5rem;
+        }
+
+        .pricing-card.featured .price-note {
+          color: var(--sage-light);
+        }
+
+        .features-list {
+          list-style: none;
+          padding: 0;
+          margin: 0 0 2rem 0;
+          flex: 1;
+        }
+
+        .features-list li {
+          display: flex;
+          align-items: flex-start;
+          gap: 0.75rem;
+          padding: 0.6rem 0;
+          font-size: 0.9rem;
+          color: var(--slate);
+          line-height: 1.5;
+        }
+
+        .pricing-card.featured .features-list li {
+          color: rgba(255,255,255,0.85);
+        }
+
+        .features-list li:first-child {
+          font-weight: 500;
+          color: var(--iron);
+        }
+
+        .pricing-card.featured .features-list li:first-child {
+          color: var(--cream-warm);
+        }
+
+        .check-icon {
+          width: 18px;
+          height: 18px;
+          color: var(--hydrangea-deep);
+          flex-shrink: 0;
+          margin-top: 2px;
+        }
+
+        .pricing-card.featured .check-icon {
+          color: var(--sage-light);
+        }
+
+        .cta-button {
+          width: 100%;
+          padding: 1rem 1.5rem;
+          font-family: 'Jost', sans-serif;
+          font-size: 0.8rem;
+          font-weight: 400;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+          border: none;
+          cursor: pointer;
+          transition: all 0.3s ease;
+        }
+
+        .cta-button.primary {
+          background: var(--hydrangea-deep);
+          color: var(--cream-warm);
+        }
+
+        .cta-button.primary:hover {
+          background: var(--iron);
+        }
+
+        .cta-button.featured {
+          background: var(--cream-warm);
+          color: var(--iron);
+        }
+
+        .cta-button.featured:hover {
+          background: white;
+        }
+
+        .cta-button.outline {
+          background: transparent;
+          border: 1px solid var(--hydrangea-deep);
+          color: var(--hydrangea-deep);
+        }
+
+        .cta-button.outline:hover {
+          background: var(--hydrangea-deep);
+          color: var(--cream-warm);
+        }
+
+        .cta-button:disabled {
+          opacity: 0.6;
+          cursor: not-allowed;
+        }
+
+        .guarantee-section {
+          background: var(--sage);
+          color: var(--cream-warm);
+          padding: 2.5rem;
+          text-align: center;
+          margin-bottom: 3rem;
+        }
+
+        .guarantee-section h3 {
+          font-family: 'Cormorant Garamond', serif;
+          font-size: 1.5rem;
+          font-weight: 400;
+          margin: 0 0 0.75rem 0;
+        }
+
+        .guarantee-section p {
+          font-size: 0.95rem;
+          opacity: 0.9;
+          margin: 0;
+          max-width: 500px;
+          margin-left: auto;
+          margin-right: auto;
+          line-height: 1.6;
+        }
+
+        .pricing-footer {
+          text-align: center;
+          color: var(--taupe);
+          font-size: 0.9rem;
+        }
+
+        .pricing-footer a {
+          color: var(--hydrangea-deep);
+          text-decoration: none;
+        }
+
+        .pricing-footer a:hover {
+          text-decoration: underline;
+        }
+
+        /* Custom switch styling */
+        .toggle-switch {
+          position: relative;
+          width: 52px;
+          height: 28px;
+          background: var(--stone);
+          border-radius: 14px;
+          cursor: pointer;
+          transition: background 0.3s ease;
+        }
+
+        .toggle-switch.active {
+          background: var(--hydrangea-deep);
+        }
+
+        .toggle-switch::after {
+          content: '';
+          position: absolute;
+          top: 3px;
+          left: 3px;
+          width: 22px;
+          height: 22px;
+          background: white;
+          border-radius: 50%;
+          transition: transform 0.3s ease;
+        }
+
+        .toggle-switch.active::after {
+          transform: translateX(24px);
+        }
+      `}</style>
+
+      <div className="pricing-container">
+        <button className="back-button" onClick={() => navigate(-1)}>
+          <ArrowLeft size={16} />
+          Back
+        </button>
+
+        <div className="pricing-header">
+          <p className="eyebrow">Pricing</p>
+          <h1>Choose your <em>path</em></h1>
+          <p>
+            Select the tier that aligns with your wealth-building journey. 
+            All plans include a 14-day clarity guarantee.
+          </p>
+        </div>
+
+        <div className="billing-toggle">
+          <span className={!isYearly ? "active" : ""}>Monthly</span>
+          <div 
+            className={`toggle-switch ${isYearly ? "active" : ""}`}
+            onClick={() => setIsYearly(!isYearly)}
+          />
+          <span className={isYearly ? "active" : ""}>Yearly</span>
+          {isYearly && (
+            <span className="savings-badge">Save up to 35%</span>
+          )}
+        </div>
+
+        <div className="pricing-grid">
+          {Object.entries(SUBSCRIPTION_TIERS).map(([key, tier]) => {
+            const isCurrentPlan = currentTierKey === key;
+            const isPopular = tier.popular;
+            const displayPrice = isYearly ? tier.yearlyPrice : tier.monthlyPrice;
+            const savingsPercent = Math.round((1 - tier.yearlyPrice / (tier.monthlyPrice * 12)) * 100);
+
+            return (
+              <div
+                key={key}
+                className={`pricing-card ${isPopular ? "featured" : ""} ${isCurrentPlan ? "current" : ""}`}
+              >
+                {isPopular && !isCurrentPlan && (
+                  <span className="card-badge popular">Most Popular</span>
+                )}
+                {isCurrentPlan && (
+                  <span className="card-badge current">Your Plan</span>
+                )}
+
+                <h2 className="tier-name">{tier.name}</h2>
+                <p className="tier-subtitle">{tier.subtitle}</p>
+
+                <div className="price-container">
+                  <div>
+                    <span className="price">${displayPrice}</span>
+                    <span className="price-period">/{isYearly ? "year" : "month"}</span>
+                  </div>
+                  {isYearly ? (
+                    <p className="price-note">Save {savingsPercent}% vs monthly</p>
+                  ) : (
+                    <p className="price-note">${tier.yearlyPrice}/year (save {savingsPercent}%)</p>
+                  )}
+                </div>
+
+                <ul className="features-list">
+                  {tier.features.map((feature, index) => (
+                    <li key={index}>
+                      <Check className="check-icon" />
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                {isCurrentPlan ? (
+                  <button
+                    className="cta-button outline"
+                    onClick={handleManageSubscription}
+                  >
+                    Manage Subscription
+                  </button>
+                ) : (
+                  <button
+                    className={`cta-button ${isPopular ? "featured" : "primary"}`}
+                    onClick={() => handleSubscribe(key)}
+                    disabled={loadingTier === key}
+                  >
+                    {loadingTier === key ? "Loading..." : "Get Started"}
+                  </button>
+                )}
+              </div>
+            );
+          })}
+        </div>
+
+        <div className="guarantee-section">
+          <h3>14-Day Clarity Guarantee</h3>
+          <p>
+            If WanderlustFin doesn't bring you more clarity and confidence in your first 14 days, 
+            we'll refund your first payment. No questions asked.
+          </p>
+        </div>
+
+        <div className="pricing-footer">
+          <p>
+            Questions? Contact us at{" "}
+            <a href="mailto:hello@wanderlustfin.com">hello@wanderlustfin.com</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Pricing;
