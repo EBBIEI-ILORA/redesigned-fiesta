@@ -881,7 +881,7 @@ footer {
       </button>
       <ul class="nav-links">
         <li><a href="features.html">Features</a></li>
-        <li><a href="https://app.wanderlustfin.com/pricing">Pricing</a></li>
+        <li><a href="https://app.wanderlustfin.co/pricing">Pricing</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="blog.html">Resources</a></li>
         <li><a href="quiz.html" class="nav-cta">Take the Quiz</a></li>
@@ -919,7 +919,7 @@ footer {
             <li>1 savings goal with progress</li>
             <li>Mobile app access</li>
           </ul>
-          <a href="https://app.wanderlustfin.com/pricing" class="btn btn-secondary">Start Your Awakening</a>
+          <a href="https://app.wanderlustfin.co/pricing" class="btn btn-secondary">Start Your Awakening</a>
         </div>
 
         <!-- Expansion Tier -->
@@ -942,7 +942,7 @@ footer {
             <li>Year-over-year comparisons</li>
             <li>Priority support</li>
           </ul>
-          <a href="https://app.wanderlustfin.com/pricing" class="btn btn-primary">Begin Your Expansion</a>
+          <a href="https://app.wanderlustfin.co/pricing" class="btn btn-primary">Begin Your Expansion</a>
         </div>
 
         <!-- Embodiment Tier -->
@@ -963,7 +963,7 @@ footer {
             <li>Early access to new features</li>
             <li>Founding member badge</li>
           </ul>
-          <a href="https://app.wanderlustfin.com/pricing" class="btn btn-secondary">Embody Your Legacy</a>
+          <a href="https://app.wanderlustfin.co/pricing" class="btn btn-secondary">Embody Your Legacy</a>
         </div>
 
       </div>
@@ -1123,9 +1123,9 @@ footer {
           <h5>Product</h5>
           <ul>
             <li><a href="features.html">Features</a></li>
-            <li><a href="https://app.wanderlustfin.com/pricing">Pricing</a></li>
+            <li><a href="https://app.wanderlustfin.co/pricing">Pricing</a></li>
             <li><a href="quiz.html">Take the Quiz</a></li>
-            <li><a href="https://app.wanderlustfin.com/pricing">Get Started</a></li>
+            <li><a href="https://app.wanderlustfin.co/pricing">Get Started</a></li>
           </ul>
         </div>
         <div class="footer-links">
